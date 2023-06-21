@@ -1,0 +1,5035 @@
+# baseURI: http://www.semanticweb.org/ontologies/2022/1/CfHA
+
+@base <http://www.semanticweb.org/ontologies/2022/1/CfHA> .
+@prefix : <http://www.semanticweb.org/ontologies/2022/1/CfHA/> .
+@prefix CfHA: <http://www.semanticweb.org/ontologies/2022/1/CfHA#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/ontologies/2022/1/CfHA>
+	a owl:Ontology ;
+	rdfs:comment "A ontology for the Center of HelioAnalytics"@en ;
+	.
+
+swrla:isRuleEnabled
+	a owl:AnnotationProperty ;
+	.
+
+<#AGU+Presentation+on+20+questions+exercise>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "AGU Presentation on 20 questions exercise" ;
+	.
+
+CfHA:AI
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "AI" ;
+	.
+
+CfHA:AIA
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "AIA" ;
+	.
+
+<#AIA+Prepping+pipeline>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "AIA Prepping pipeline" ;
+	.
+
+<#AIA+prep>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "AIA prep" ;
+	.
+
+CfHA:AULs
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "AULs" ;
+	.
+
+CfHA:Action
+	a owl:Class ;
+	rdfs:label "Action" ;
+	.
+
+<#Active+Contours+without+Edges>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Active Contours without Edges" ;
+	.
+
+CfHA:Activity
+	a owl:Class ;
+	rdfs:label "Activity" ;
+	.
+
+CfHA:AdamKellerman
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Adam Kellerman" ;
+	CfHA:associatedWithTopic
+		CfHA:AULs ,
+		<#ISWAT+01-01> ,
+		<#Metrics+and+Validation> ,
+		<#Radiation+belts> ,
+		<#Space+Weather>
+		;
+	CfHA:familyName "Kellerman" ;
+	CfHA:givenName "Adam" ;
+	CfHA:hasLocation "London, United Kingdom" ;
+	CfHA:inGroup CfHA:UCLA ;
+	CfHA:inSubGroup <#Earth+Planetary+and+Space+Sciences> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+<#Aerospace+Engineering+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Aerospace Engineering Sciences" ;
+	CfHA:partOfGroup <#University+of+Colorado> ;
+	.
+
+CfHA:Affiliate
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Activity ;
+	rdfs:label "Affiliate" ;
+	.
+
+CfHA:AjayTiwari
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Ajay Tiwari" ;
+	CfHA:associatedWithTopic
+		<#Computer+vision> ,
+		<#Coronal+holes> ,
+		<#EIT+prep> ,
+		<#EUV+Image> ,
+		<#Feature+identification> ,
+		CfHA:K-means ,
+		<#Synchronic+maps> ,
+		<#Unsupervised+ML> ,
+		CfHA:W-net
+		;
+	CfHA:collaboratesWithGroup <#Multiscale+Dynamics> ;
+	CfHA:familyName "Tiwari" ;
+	CfHA:givenName "Ajay" ;
+	CfHA:inGroup <#Centrum+WIskunde+%26+Informatica> ;
+	CfHA:publishedOn <#Supervised+ML> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Published+a+paper>
+		;
+	.
+
+CfHA:AlexBarrie
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Alex Barrie" ;
+	CfHA:associatedWithTopic
+		CfHA:ML ,
+		<#Machine+instrumentation>
+		;
+	CfHA:collaboratesWithGroup <#Code+673> ;
+	CfHA:familyName "Barrie" ;
+	CfHA:givenName "Alex" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Published+a+paper>
+		;
+	.
+
+CfHA:AlexaJ.Halford
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Alexa J. Halford" ;
+	CfHA:associatedWithTopic
+		CfHA:AULs ,
+		<#ISWAT+01-01> ,
+		<#Metrics+and+Validation> ,
+		<#Radiation+belts> ,
+		<#Space+Weather>
+		;
+	CfHA:collaboratesWithGroup <#Earth+Planetary+and+Space+Sciences> ;
+	CfHA:familyName "Halford" ;
+	CfHA:givenName "Alexa J." ;
+	CfHA:inGroup CfHA:UCLA ;
+	CfHA:middleName "J." ;
+	CfHA:relatedToPerson CfHA:AdamKellerman ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper>
+		;
+	.
+
+<#Altamira+Technologies+Corporation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Altamira Technologies Corporation" ;
+	.
+
+CfHA:AmyWalton
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Amy Walton" ;
+	CfHA:associatedWithTopic
+		<#Big+data> ,
+		<#Data+science> ,
+		<#Data+science+education>
+		;
+	CfHA:collaboratesWithGroup <#Harnessing+the+Data+Revolution> ;
+	CfHA:familyName "Walton" ;
+	CfHA:givenName "Amy" ;
+	CfHA:inGroup <#National+Science+Foundation> ;
+	CfHA:worksOn <#Worked+on+a+funded+project> ;
+	.
+
+<#Ann+and+H.J.+Smead+Department+of+Aerospace+Engineering+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Ann and H.J. Smead Department of Aerospace Engineering Sciences" ;
+	CfHA:partOfGroup <#University+of+Colorado> ;
+	.
+
+<#Applied+Physics+Laboratory>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Applied Physics Laboratory" ;
+	CfHA:partOfGroup <#Johns+Hopkins+University> ;
+	.
+
+CfHA:AstiBhatt
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Asti Bhatt" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Data+science+education> ,
+		CfHA:ML ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Geospace+Studies> ;
+	CfHA:familyName "Bhatt" ;
+	CfHA:givenName "Asti" ;
+	CfHA:inGroup <#SRI+International> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:Astrophysics
+	a
+		owl:NamedIndividual ,
+		CfHA:Group ,
+		owl:Class
+		;
+	rdfs:subClassOf CfHA:Topic ;
+	rdfs:label "Astrophysics" ;
+	CfHA:partOfGroup <#Lockheed+Martin> ;
+	.
+
+<#Asymmetries+in+the+magnetosphere+and+ionosphere>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Asymmetries in the magnetosphere and ionosphere" ;
+	.
+
+<#Auroral+physics>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Auroral physics" ;
+	.
+
+<#Austrian+Academy+of+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Austrian Academy of Sciences" ;
+	.
+
+<#Auto+ML>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Auto ML" ;
+	.
+
+CfHA:Benchmarking
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Benchmarking" ;
+	.
+
+<#BenoÃ®tTrembay>
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "BenoÃ®t Trembay" ;
+	CfHA:associatedWithTopic
+		<#Coronal+holes> ,
+		CfHA:EIT ,
+		<#EUV+Image> ,
+		<#Feature+identification> ,
+		CfHA:K-means ,
+		CfHA:ML ,
+		CfHA:STEREO ,
+		<#Synoptic+maps> ,
+		CfHA:W-net
+		;
+	CfHA:collaboratesWithGroup CfHA:LASP ;
+	CfHA:familyName "Trembay" ;
+	CfHA:givenName "BenoÃ®t" ;
+	CfHA:inGroup <#University+of+Colorado> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+<#Big+data>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Big data" ;
+	.
+
+<#Boston+University>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Boston University" ;
+	.
+
+CfHA:BrainFurtaw
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Brian Furtaw" ;
+	CfHA:associatedWithTopic
+		CfHA:CUDA ,
+		CfHA:GPU ,
+		CfHA:RAPIDS
+		;
+	CfHA:collaboratesWithGroup <#RAPIDS+ML%2FAI> ;
+	CfHA:familyName "Furtaw" ;
+	CfHA:givenName "Brian" ;
+	CfHA:inGroup CfHA:NVIDIA ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:BrianThomas
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Brian Thomas" ;
+	CfHA:associatedWithTopic
+		CfHA:AIA ,
+		<#AIA+Prepping+pipeline> ,
+		CfHA:CME ,
+		<#Data+infrastructure> ,
+		<#Database+development> ,
+		<#Feature+identification> ,
+		CfHA:LASCO ,
+		<#Prism+cluster> ,
+		CfHA:Yolo
+		;
+	CfHA:collaboratesWithGroup CfHA:JH000 ;
+	CfHA:familyName "Thomas" ;
+	CfHA:givenName "Brian" ;
+	CfHA:inGroup <#NASA+Headquarters> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:BrianWilson
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Brian Wilson" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		CfHA:Engineering ,
+		<#Instrument+design> ,
+		<#Mission+design>
+		;
+	CfHA:collaboratesWithGroup <#Earth+and+Space+Science+Department> ;
+	CfHA:familyName "Wilson" ;
+	CfHA:givenName "Brian" ;
+	CfHA:inGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#JPL+Mission+Design+School> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper>
+		;
+	.
+
+CfHA:BruceFritz
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Bruce Fritz" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		CfHA:Engineering ,
+		<#Instrument+design> ,
+		<#Mission+design>
+		;
+	CfHA:collaboratesWithGroup <#Code+7630> ;
+	CfHA:familyName "Fritz" ;
+	CfHA:givenName "Bruce" ;
+	CfHA:inGroup <#U.S.+Naval+Research+Laboratory> ;
+	CfHA:inSubGroup <#Space+Science+Division> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#JPL+Mission+Design+School> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper>
+		;
+	.
+
+CfHA:C.NickArge
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "C. Nick Arge" ;
+	CfHA:associatedWithTopic
+		<#Model+development> ,
+		<#Model+validation> ,
+		CfHA:Parallelization ,
+		CfHA:Scrum ,
+		<#Software+development> ,
+		<#Space+Weather> ,
+		CfHA:WSA
+		;
+	CfHA:collaborateWithPartner CfHA:MichaelSKirk ;
+	CfHA:collaboratesWithGroup <#Code+671> ;
+	CfHA:familyName "Arge" ;
+	CfHA:givenName "C. Nick" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Coordinated+cross-Center+collaboration+with+JPL> ,
+		<#ISSI+Team> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:CME
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "CME" ;
+	.
+
+CfHA:CMEs
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "CMEs" ;
+	.
+
+CfHA:CNN
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "CNN" ;
+	.
+
+CfHA:CUDA
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "CUDA" ;
+	.
+
+<#CUSIA%2C+AULs%2C+ISWAT+01-01>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "CUSIA, AULs, ISWAT 01-01" ;
+	CfHA:partOfGroup CfHA:UTA ;
+	.
+
+CfHA:Cartography
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Cartography" ;
+	.
+
+<#Center+for+Data%2C+Mathematical%2C+%26+Computational+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Center for Data, Mathematical, & Computational Sciences" ;
+	CfHA:partOfGroup <#Goucher+College> ;
+	.
+
+<#Center+for+HelioAnalytics>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Center for HelioAnalytics" ;
+	.
+
+<#Center+for+Space+Plasma+Physics>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Center for Space Plasma Physics" ;
+	CfHA:partOfGroup <#Space+Science+Institute> ;
+	.
+
+<#Centrum+WIskunde+%26+Informatica>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Centrum WIskunde and Informatica" ;
+	.
+
+CfHA:CfHA
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "CfHA Participation" ;
+	.
+
+<#Class+imbalance>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Class imbalance" ;
+	.
+
+CfHA:Clustering
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Clustering" ;
+	.
+
+<#Co-authored+a+presentation%2Fconference+abstract>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "Co-authored a presentation/conference abstract" ;
+	.
+
+<#Code+671>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Code 671" ;
+	CfHA:partOfGroup <#NASA+Goddard+Space+Flight+Center> ;
+	.
+
+<#Code+672>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Code 672" ;
+	CfHA:partOfGroup <#NASA+Goddard+Space+Flight+Center> ;
+	.
+
+<#Code+673>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Code 673" ;
+	CfHA:partOfGroup <#NASA+Goddard+Space+Flight+Center> ;
+	.
+
+<#Code+7630>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Code 7630" ;
+	.
+
+CfHA:Collaborate
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Affiliate ;
+	rdfs:label "Collaborate" ;
+	.
+
+<#College+of+Engineering>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "College of Engineering" ;
+	CfHA:partOfGroup <#Boston+University> ;
+	.
+
+<#Complex+system>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Complex system" ;
+	.
+
+<#Computational+and+Information+Sciences+and+Technology+Office+%28CISTO%29>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Computational and Information Sciences and Technology Office (CISTO)" ;
+	CfHA:partOfGroup <#NASA+Goddard+Space+Flight+Center> ;
+	.
+
+<#Computer+Science+for+Data+Intensive+Systems+Group+398M>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Computer Science for Data Intensive Systems Group 398M" ;
+	CfHA:partOfGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	.
+
+<#Computer+Vision+%28AI%29+for+CME+detection%2Fclassification>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Computer Vision (AI) for CME detection/classification" ;
+	.
+
+<#Computer+resources>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Computer resources" ;
+	.
+
+<#Computer+vision>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Computer vision" ;
+	.
+
+<#Conference+organization>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Conference organization" ;
+	.
+
+<#Convened+a+conference%2Fworkshop+session>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "Convened a conference/workshop session" ;
+	.
+
+CfHA:Convergence
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Convergence" ;
+	.
+
+<#Cooperative+Institute+for+Research+in+Environmental+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Cooperative Institute for Research in Environmental Sciences" ;
+	CfHA:partOfGroup <#University+of+Colorado> ;
+	.
+
+<#Coordinated+cross-Center+collaboration+with+JPL>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "Coordinated cross-Center collaboration with JPL" ;
+	.
+
+<#Cornell+University>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Cornell University" ;
+	.
+
+CfHA:Coronagraphs
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Coronagraphs" ;
+	.
+
+<#Coronal+holes>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Coronal holes" ;
+	.
+
+CfHA:Cross-disciplinary
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Cross-disciplinary" ;
+	.
+
+CfHA:Cubesat
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Cubesat" ;
+	.
+
+CfHA:DASK
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "DASK" ;
+	.
+
+CfHA:DCNN
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "DCNN" ;
+	.
+
+CfHA:DanCrichton
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Dan Crichton" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Data+science+application> ,
+		CfHA:ML ,
+		<#ML+development> ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Data+Science+Working+Group> ;
+	CfHA:familyName "Crichton" ;
+	CfHA:givenName "Dan" ;
+	CfHA:inGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:DanWelling
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Dan Welling" ;
+	CfHA:associatedWithTopic
+		<#Asymmetries+in+the+magnetosphere+and+ionosphere> ,
+		<#Metrics+and+Validation> ,
+		<#Space+Weather>
+		;
+	CfHA:collaboratesWithGroup <#CUSIA%2C+AULs%2C+ISWAT+01-01> ;
+	CfHA:familyName "Welling" ;
+	CfHA:givenName "Dan" ;
+	CfHA:inGroup CfHA:UTA ;
+	CfHA:worksOn
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:DanielDaSilva
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Daniel Da Silva" ;
+	CfHA:associatedWithTopic
+		CfHA:ML ,
+		<#Machine+instrumentation>
+		;
+	CfHA:collaboratesWithGroup <#Code+673> ;
+	CfHA:familyName "Da Silva" ;
+	CfHA:givenName "Daniel" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:relatedToPerson CfHA:AlexBarrie ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:DanielDuffy
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Daniel Duffy" ;
+	CfHA:associatedWithTopic
+		<#Data+science+education> ,
+		<#High+performance+computing> ,
+		<#Information+representation> ,
+		CfHA:ML
+		;
+	CfHA:collaborateWithPartner CfHA:RyanMcGranaghan ;
+	CfHA:collaboratesWithGroup <#Computational+and+Information+Sciences+and+Technology+Office+%28CISTO%29> ;
+	CfHA:familyName "Duffy" ;
+	CfHA:givenName "Daniel" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Coordinated+cross-Center+collaboration+with+JPL> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:DanielleWood
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Danielle Wood" ;
+	CfHA:associatedWithTopic
+		CfHA:Cross-disciplinary ,
+		<#Data+integration+system> ,
+		<#Data+science> ,
+		CfHA:Design ,
+		CfHA:Discovery ,
+		CfHA:ML ,
+		<#Space+Systems> ,
+		CfHA:Sustainability
+		;
+	CfHA:collaboratesWithGroup <#Media+Lab> ;
+	CfHA:familyName "Wood" ;
+	CfHA:givenName "Danielle" ;
+	CfHA:inGroup <#Massachusetts+Institute+of+Technology> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+<#Dartmouth+College>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Dartmouth College" ;
+	.
+
+CfHA:Data
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Publication ;
+	rdfs:label "Data" ;
+	.
+
+<#Data+Science+-+SAF%2FCO>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Data Science - SAF/CO" ;
+	CfHA:partOfGroup <#Altamira+Technologies+Corporation> ;
+	.
+
+<#Data+Science+Department>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Data Science Department" ;
+	CfHA:partOfGroup <#Cornell+University> ;
+	.
+
+<#Data+Science+Working+Group>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Data Science Working Group" ;
+	CfHA:partOfGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	.
+
+<#Data+System>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data System" ;
+	.
+
+<#Data+assimilation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data assimilation" ;
+	.
+
+<#Data+discovery>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data discovery" ;
+	.
+
+<#Data+infrastructure>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data infrastructure" ;
+	.
+
+<#Data+integration+system>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data integration system" ;
+	.
+
+<#Data+science>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data science" ;
+	.
+
+<#Data+science+application>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data science application" ;
+	.
+
+<#Data+science+education>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data science education" ;
+	.
+
+<#Data+science+policy>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data science policy" ;
+	.
+
+<#Data+science+workstation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data science workstation" ;
+	.
+
+<#Data+visualization>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Data visualization" ;
+	.
+
+<#Database+development>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Database development" ;
+	.
+
+CfHA:DavidM.Hall
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "David M. Hall" ;
+	CfHA:associatedWithTopic
+		<#Class+imbalance> ,
+		<#Feature+identification> ,
+		CfHA:GPU ,
+		<#SDO+AIA> ,
+		CfHA:Segmentation ,
+		CfHA:U-net
+		;
+	CfHA:collaboratesWithGroup <#HPC%2BAI+Business+Development> ;
+	CfHA:familyName "Hall" ;
+	CfHA:givenName "David M." ;
+	CfHA:inGroup CfHA:NVIDIA ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:DavidMatteson
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "David Matteson" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Information+representation> ,
+		<#Network+science> ,
+		CfHA:Statistics ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Data+Science+Department> ;
+	CfHA:familyName "Matteson" ;
+	CfHA:givenName "David" ;
+	CfHA:inGroup <#Cornell+University> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:DeannGarcia
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Deann Garcia" ;
+	CfHA:associatedWithTopic
+		<#Graphic+design> ,
+		<#Information+Design> ,
+		<#School+of+Arts+and+Communication> ,
+		<#Science+communication> ,
+		<#Solar+eclipse>
+		;
+	CfHA:familyName "Garcia" ;
+	CfHA:givenName "Deann" ;
+	CfHA:inGroup <#Oregon+State+University> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+<#Deep+learning>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Deep learning" ;
+	.
+
+<#Defense+Advanced+Research+Projects+Agency>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Defense Advanced Research Projects Agency" ;
+	.
+
+<#Defense+Sciences+Office>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Defense Sciences Office" ;
+	CfHA:partOfGroup <#Defense+Advanced+Research+Projects+Agency> ;
+	.
+
+<#Department+of+Atmospheric+and+Oceanic+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Department of Atmospheric and Oceanic Sciences" ;
+	CfHA:partOfGroup CfHA:UCLA ;
+	.
+
+<#Department+of+Computer+Science+%26+Engineering>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Department of Computer Science & Engineering" ;
+	CfHA:partOfGroup <#University+of+California+San+Diego> ;
+	.
+
+<#Department+of+Energy>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Department of Energy" ;
+	.
+
+<#Department+of+Mechanical+and+Aerospace+Engineering>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Department of Mechanical and Aerospace Engineering" ;
+	CfHA:partOfGroup <#West+Virginia+University> ;
+	.
+
+<#Department+of+Physics+and+Astronomy>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Department of Physics and Astronomy" ;
+	CfHA:partOfGroup <#University+of+Calgary> ;
+	.
+
+CfHA:Design
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Design" ;
+	.
+
+<#Digital+transformation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Digital transformation" ;
+	.
+
+CfHA:Discovery
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Discovery" ;
+	.
+
+CfHA:Domainn
+	a owl:Class ;
+	rdfs:comment "Domain" ;
+	.
+
+CfHA:DouglasRao
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Douglas Rao" ;
+	CfHA:collaboratesWithGroup <#North+Carolina+Institute+for+Climate+Studies+%28NCICS%29> ;
+	CfHA:familyName "Rao" ;
+	CfHA:givenName "Douglas" ;
+	CfHA:inGroup <#North+Carolina+State+University> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:Dr.A.J.Halford
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Dr. A.J. Halford" ;
+	CfHA:associatedWithTopic
+		<#Asymmetries+in+the+magnetosphere+and+ionosphere> ,
+		CfHA:Benchmarking ,
+		<#EMIC+waves> ,
+		<#Metrics+and+Validation> ,
+		<#Radiation+belts> ,
+		CfHA:SWORM ,
+		<#Space+Weather> ,
+		CfHA:Statistics ,
+		CfHA:Substorms
+		;
+	CfHA:collaboratesWithGroup
+		<#CUSIA%2C+AULs%2C+ISWAT+01-01> ,
+		CfHA:NESDIS ,
+		<#Space+Physics>
+		;
+	CfHA:familyName "Halford" ;
+	CfHA:givenName "Dr. A.J." ;
+	CfHA:inGroup <#Center+for+HelioAnalytics> ;
+	CfHA:relatedToPerson
+		CfHA:DanWelling ,
+		CfHA:RobReadmon ,
+		CfHA:SteveMorley
+		;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:EIT
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "EIT" ;
+	.
+
+<#EIT+prep>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "EIT prep" ;
+	.
+
+<#EMIC+waves>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "EMIC waves" ;
+	.
+
+CfHA:EPSCOR
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "EPSCOR" ;
+	.
+
+<#EUV+Corona>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "EUV Corona" ;
+	.
+
+<#EUV+Image>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "EUV Image" ;
+	.
+
+<#Earth+Planetary+and+Space+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Earth Planetary and Space Sciences" ;
+	CfHA:partOfGroup CfHA:UCLA ;
+	.
+
+<#Earth+and+Space+Science+Department>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Earth and Space Science Department" ;
+	CfHA:partOfGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	.
+
+<#Earth+science>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Earth science" ;
+	.
+
+CfHA:EarthScience
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Topic ;
+	.
+
+<#Edge+detection>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Edge detection" ;
+	.
+
+CfHA:Education
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Education" ;
+	.
+
+CfHA:Engineering
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Engineering" ;
+	.
+
+CfHA:EnricoCamporeale
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Enrico Camporeale" ;
+	CfHA:associatedWithTopic
+		<#Conference+organization> ,
+		<#Data+science> ,
+		<#Data+science+education> ,
+		CfHA:GMM ,
+		CfHA:ML ,
+		CfHA:ML-helio ,
+		<#Predictive+models> ,
+		<#Scientific+discovery> ,
+		<#Student+mentorship>
+		;
+	CfHA:collaboratesWithGroup
+		<#Cooperative+Institute+for+Research+in+Environmental+Sciences> ,
+		CfHA:SWPC
+		;
+	CfHA:familyName "Camporeale" ;
+	CfHA:givenName "Enrico" ;
+	CfHA:inGroup
+		<#National+Oceanic+and+Atmospheric+Administration> ,
+		<#University+of+Colorado>
+		;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:EricDonovan
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Eric Donovan" ;
+	CfHA:associatedWithTopic
+		<#Data+assimilation> ,
+		<#Data+integration+system> ,
+		<#Data+science> ,
+		<#Data+visualization> ,
+		<#Information+representation> ,
+		<#Knowledge+system> ,
+		CfHA:ML
+		;
+	CfHA:collaboratesWithGroup <#Department+of+Physics+and+Astronomy> ;
+	CfHA:familyName "Donovan" ;
+	CfHA:givenName "Eric" ;
+	CfHA:inGroup <#University+of+Calgary> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:Event
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Output ;
+	rdfs:label "Event" ;
+	.
+
+<#Event+identification>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Event identification" ;
+	.
+
+CfHA:Exchange
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Affiliate ;
+	rdfs:label "Exchange" ;
+	.
+
+<#Feature+evolution>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Feature evolution" ;
+	.
+
+<#Feature+identification>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Feature identification" ;
+	.
+
+<#Feature+selection>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Feature selection" ;
+	.
+
+<#Federal+Account+Manager>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Federal Account Manager" ;
+	CfHA:partOfGroup <#HP+Inc.> ;
+	.
+
+<#Flux+Ropes>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Flux Ropes" ;
+	.
+
+CfHA:Frequency
+	a owl:DatatypeProperty ;
+	rdfs:label "Frequency" ;
+	rdfs:domain
+		CfHA:Action ,
+		CfHA:Activity ,
+		CfHA:Domainn ,
+		CfHA:Event ,
+		CfHA:Funds ,
+		CfHA:Input ,
+		CfHA:Object ,
+		CfHA:Organization ,
+		CfHA:Other ,
+		CfHA:Output ,
+		CfHA:Person ,
+		CfHA:Position ,
+		CfHA:Program ,
+		CfHA:Role ,
+		CfHA:Skill ,
+		CfHA:Team ,
+		CfHA:Topic
+		;
+	rdfs:range xsd:int ;
+	.
+
+CfHA:Funds
+	a owl:Class ;
+	rdfs:label "Funds" ;
+	.
+
+<#GEM%2FCEDAR%2FSHINE+ML+Exploratory+Committee>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "GEM/CEDAR/SHINE ML Exploratory Committee" ;
+	.
+
+<#GFZ+Potsdam>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "GFZ Potsdam" ;
+	.
+
+CfHA:GMM
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "GMM" ;
+	.
+
+CfHA:GPU
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "GPU" ;
+	.
+
+CfHA:GeoffreyLevene
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Geoffrey Levene" ;
+	CfHA:associatedWithTopic
+		CfHA:GPU ,
+		<#HPC+communications> ,
+		<#ML+development> ,
+		CfHA:Podcast ,
+		CfHA:Webinar
+		;
+	CfHA:collaboratesWithGroup <#Global+Director%2C+Business+Development%2C+Data+Science> ;
+	CfHA:familyName "Levene" ;
+	CfHA:givenName "Geoffrey" ;
+	CfHA:inGroup CfHA:NVIDIA ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+<#Geospace+Studies>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Geospace Studies" ;
+	CfHA:partOfGroup <#SRI+International> ;
+	.
+
+CfHA:Gitlab
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Gitlab" ;
+	.
+
+<#Global+Director%2C+Business+Development%2C+Data+Science>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Global Director, Business Development, Data Science" ;
+	CfHA:partOfGroup CfHA:NVIDIA ;
+	.
+
+CfHA:Google
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Google" ;
+	.
+
+<#Google+AI>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Google AI" ;
+	CfHA:partOfGroup CfHA:Google ;
+	.
+
+<#Goucher+College>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Goucher College" ;
+	.
+
+<#Graduate+student>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Graduate student" ;
+	.
+
+<#Graphic+design>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Graphic design" ;
+	.
+
+CfHA:GregLucas
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Greg Lucas" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Information+representation> ,
+		<#Open+source>
+		;
+	CfHA:collaboratesWithGroup <#Laboratory+for+Atmospheric+and+Space+Physics> ;
+	CfHA:familyName "Lucas" ;
+	CfHA:givenName "Greg" ;
+	CfHA:inGroup <#University+of+Colorado> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:Group
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Organization ;
+	rdfs:label "Group" ;
+	owl:disjointWith CfHA:Person ;
+	.
+
+<#HP+Federal+Civilian+%26+SI>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "HP Federal Civilian & SI" ;
+	CfHA:partOfGroup <#HP+Inc.> ;
+	.
+
+<#HP+Inc.>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "HP Inc." ;
+	.
+
+CfHA:HPC
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "HPC" ;
+	.
+
+<#HPC%2BAI+Business+Development>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "HPC+AI Business Development" ;
+	CfHA:partOfGroup CfHA:NVIDIA ;
+	.
+
+<#HPC+communications>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "HPC communications" ;
+	.
+
+CfHA:Hackathon
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Hackathon" ;
+	.
+
+CfHA:HaimanWang
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Haiman Wang" ;
+	CfHA:associatedWithTopic
+		<#Data+science+education> ,
+		CfHA:ML
+		;
+	CfHA:collaboratesWithGroup <#Institute+for+Space+Weather+Sciences> ;
+	CfHA:familyName "Wang" ;
+	CfHA:givenName "Haiman" ;
+	CfHA:inGroup <#New+Jersey+Institute+of+Technology> ;
+	CfHA:worksOn <#Worked+on+a+funded+project> ;
+	.
+
+<#Harnessing+the+Data+Revolution>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Harnessing the Data Revolution" ;
+	CfHA:partOfGroup <#National+Science+Foundation> ;
+	.
+
+<#Helio+HPC>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Helio HPC" ;
+	.
+
+CfHA:Heliophysics
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic ,
+		owl:Class
+		;
+	rdfs:subClassOf CfHA:Topic ;
+	rdfs:label "Heliophysics" ;
+	.
+
+<#High+performance+computing>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "High performance computing" ;
+	.
+
+CfHA:ICME
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ICME" ;
+	.
+
+<#ISSI+Team>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "ISSI Team" ;
+	.
+
+<#ISWAT+01-01>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ISWAT 01-01" ;
+	.
+
+<#ITCD+Solutions+Division+Code+730>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "ITCD Solutions Division Code 730" ;
+	CfHA:partOfGroup <#NASA+Goddard+Space+Flight+Center> ;
+	.
+
+CfHA:IanHewins
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Ian Hewins" ;
+	CfHA:associatedWithTopic
+		CfHA:Cartography ,
+		<#Coronal+holes> ,
+		<#Feature+identification> ,
+		<#Solar+cycle> ,
+		<#Synoptic+images> ,
+		<#Synoptic+maps>
+		;
+	CfHA:collaboratesWithGroup
+		<#McIntosh+Archive> ,
+		<#Solar+Frontiers+Section>
+		;
+	CfHA:givenName "Ian" ;
+	CfHA:inGroup <#NCAR+HAO> ;
+	CfHA:worksOn <#Worked+on+a+funded+project> ;
+	.
+
+<#Image+analysis>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Image analysis" ;
+	.
+
+<#Image+compression>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Image compression" ;
+	.
+
+<#Image+enhancement>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Image enhancement" ;
+	.
+
+<#Image+pipelines>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Image pipelines" ;
+	.
+
+<#Image+prep>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Image prep" ;
+	.
+
+<#Image+segmentation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Image segmentation" ;
+	.
+
+<#Information+Design>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Information design" ;
+	.
+
+<#Information+representation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Information representation" ;
+	.
+
+<#Information+systems>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Information systems" ;
+	.
+
+<#Information+theory>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Information theory" ;
+	.
+
+CfHA:Input
+	a owl:Class ;
+	.
+
+<#Institute+for+Space+Weather+Sciences>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Institute for Space Weather Sciences" ;
+	CfHA:partOfGroup <#New+Jersey+Institute+of+Technology> ;
+	.
+
+<#Instrument+design>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Instrument design" ;
+	.
+
+<#Intern+mentoring>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Intern mentoring" ;
+	.
+
+CfHA:Ionosphere
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Ionosphere" ;
+	.
+
+<#Ionospheric+and+Remote+Sensing+Group>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Ionospheric and Remote Sensing Group" ;
+	CfHA:partOfGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	.
+
+CfHA:IrinaZhelavskaya
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Irina Zhelavskaya" ;
+	CfHA:associatedWithTopic
+		<#Data+assimilation> ,
+		CfHA:ML ,
+		<#Scientific+discovery>
+		;
+	CfHA:collaboratesWithGroup <#Space+Environment+Modeling+Group> ;
+	CfHA:familyName "Zhelavskaya" ;
+	CfHA:givenName "Irina" ;
+	CfHA:inGroup <#GFZ+Potsdam> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#ISSI+Team> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:JH000
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "JH000" ;
+	CfHA:partOfGroup <#NASA+Headquarters> ;
+	.
+
+<#JPL+Mission+Design+School>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "JPL Mission Design School" ;
+	.
+
+CfHA:JacobBortnik
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Jacob Bortnik" ;
+	CfHA:associatedWithTopic
+		CfHA:Convergence ,
+		<#Data+science> ,
+		<#Data+science+education> ,
+		CfHA:ML ,
+		<#Predictive+models> ,
+		<#Scientific+discovery> ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Department+of+Atmospheric+and+Oceanic+Sciences> ;
+	CfHA:familyName "Bortnik" ;
+	CfHA:givenName "Jacob" ;
+	CfHA:inGroup CfHA:UCLA ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:JamesStockton
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "James Stockton" ;
+	CfHA:associatedWithTopic
+		<#EUV+Image> ,
+		CfHA:ML ,
+		<#ML+Traceability> ,
+		<#SDO+AIA> ,
+		CfHA:Segmentation ,
+		CfHA:U-net
+		;
+	CfHA:collaboratesWithGroup <#Data+Science+-+SAF%2FCO> ;
+	CfHA:familyName "Stockton" ;
+	CfHA:givenName "James" ;
+	CfHA:inGroup <#Altamira+Technologies+Corporation> ;
+	CfHA:worksOn
+		<#Conference+organization> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:Java
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Java" ;
+	.
+
+CfHA:JeffSmith
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Jeff Smith" ;
+	CfHA:associatedWithTopic
+		<#Data+science+workstation> ,
+		CfHA:HPC ,
+		CfHA:Z
+		;
+	CfHA:collaboratesWithGroup <#HP+Federal+Civilian+%26+SI> ;
+	CfHA:familyName "Smith" ;
+	CfHA:givenName "Jeff" ;
+	CfHA:inGroup <#HP+Inc.> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:JenniferKnuth
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Jennifer Knuth" ;
+	CfHA:associatedWithTopic
+		<#Data+integration+system> ,
+		<#Information+representation> ,
+		CfHA:Java ,
+		<#Knowledge+system> ,
+		CfHA:Ontology ,
+		<#User+design>
+		;
+	CfHA:collaboratesWithGroup <#Laboratory+for+Atmospheric+and+Space+Physics> ;
+	CfHA:familyName "Knuth" ;
+	CfHA:givenName "Jennifer" ;
+	CfHA:inGroup <#University+of+Colorado> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:JeremyGrajeda
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Jeremy Grajeda" ;
+	CfHA:associatedWithTopic
+		<#Active+Contours+without+Edges> ,
+		<#Coronal+holes> ,
+		<#EUV+Image> ,
+		<#Edge+detection> ,
+		<#Feature+evolution> ,
+		<#Graduate+student> ,
+		<#SDO+AIA>
+		;
+	CfHA:collaboratesWithGroup <#Klipsch+School+of+Electrical+and+Computer+Engineering> ;
+	CfHA:familyName "Grajeda" ;
+	CfHA:givenName "Jeremy" ;
+	CfHA:inGroup <#New+Mexico+State+University> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Published+a+paper>
+		;
+	.
+
+CfHA:JesperGjerloev
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Jesper Gjerloev" ;
+	CfHA:associatedWithTopic
+		<#Auroral+physics> ,
+		<#Data+discovery> ,
+		<#Feature+selection> ,
+		CfHA:Physics ,
+		<#Scientific+discovery>
+		;
+	CfHA:collaboratesWithGroup
+		<#Applied+Physics+Laboratory> ,
+		<#Machine+Learning+and+Instrument+Autonomy>
+		;
+	CfHA:familyName "Gjerloev" ;
+	CfHA:givenName "Jesper" ;
+	CfHA:inGroup <#Johns+Hopkins+University> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:JimHooks
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Jim Hooks" ;
+	CfHA:associatedWithTopic
+		CfHA:GPU ,
+		CfHA:HPC ,
+		CfHA:Hackathon ,
+		CfHA:ML ,
+		<#Project+coordination>
+		;
+	CfHA:collaboratesWithGroup <#HPC%2BAI+Business+Development> ;
+	CfHA:familyName "Hooks" ;
+	CfHA:givenName "Jim" ;
+	CfHA:inGroup CfHA:NVIDIA ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:JoeBorovksy
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Joe Borovksy" ;
+	CfHA:associatedWithTopic
+		<#Complex+system> ,
+		<#Information+representation> ,
+		<#Knowledge+Representation> ,
+		CfHA:Physics ,
+		<#Scientific+discovery> ,
+		CfHA:Statistics ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Center+for+Space+Plasma+Physics> ;
+	CfHA:familyName "Borovksy" ;
+	CfHA:givenName "Joe" ;
+	CfHA:inGroup <#Space+Science+Institute> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+<#Johns+Hopkins+University>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Johns Hopkins University" ;
+	.
+
+CfHA:JoshSemeter
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Josh Semeter" ;
+	CfHA:associatedWithTopic
+		<#Auroral+physics> ,
+		CfHA:Cubesat ,
+		<#Data+science> ,
+		<#Data+science+education> ,
+		CfHA:Engineering ,
+		CfHA:ML ,
+		<#Scientific+discovery> ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#College+of+Engineering> ;
+	CfHA:familyName "Semeter" ;
+	CfHA:givenName "Josh" ;
+	CfHA:inGroup <#Boston+University> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:K-means
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "K-means" ;
+	.
+
+<#Klipsch+School+of+Electrical+and+Computer+Engineering>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Klipsch School of Electrical and Computer Engineering" ;
+	CfHA:partOfGroup <#New+Mexico+State+University> ;
+	.
+
+CfHA:Know
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Affiliate ;
+	rdfs:label "Know" ;
+	.
+
+<#Knowledge+Representation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Knowledge representation" ;
+	.
+
+<#Knowledge+capture>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Knowledge capture" ;
+	.
+
+<#Knowledge+graph>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Knowledge graph" ;
+	.
+
+<#Knowledge+network>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Knowledge network" ;
+	.
+
+<#Knowledge+system>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Knowledge system" ;
+	.
+
+CfHA:KristinaLynch
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Kristina Lynch" ;
+	CfHA:associatedWithTopic
+		<#Auroral+physics> ,
+		<#Data+assimilation> ,
+		<#Data+science+education> ,
+		<#Information+representation> ,
+		<#Knowledge+system> ,
+		CfHA:ML
+		;
+	CfHA:collaboratesWithGroup <#Physics+and+Astronomy> ;
+	CfHA:familyName "Lynch" ;
+	CfHA:givenName "Kristina" ;
+	CfHA:inGroup <#Dartmouth+College> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:LANL
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "LANL" ;
+	.
+
+CfHA:LASCO
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "LASCO" ;
+	.
+
+CfHA:LASP
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "LASP" ;
+	CfHA:partOfGroup <#University+of+Colorado> ;
+	.
+
+<#Laboratory+for+Atmospheric+and+Space+Physics>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Laboratory for Atmospheric and Space Physics" ;
+	CfHA:partOfGroup <#University+of+Colorado> ;
+	.
+
+CfHA:LauraBiven
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Laura Biven" ;
+	CfHA:associatedWithTopic
+		<#Data+System> ,
+		<#Data+integration+system> ,
+		<#Data+science> ,
+		<#Data+science+policy> ,
+		<#Information+representation>
+		;
+	CfHA:familyName "Biven" ;
+	CfHA:givenName "Laura" ;
+	CfHA:inGroup <#Department+of+Energy> ;
+	CfHA:worksOn <#Convened+a+conference%2Fworkshop+session> ;
+	.
+
+CfHA:LauraBoucheron
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Laura Boucheron" ;
+	CfHA:associatedWithTopic
+		<#Active+Contours+without+Edges> ,
+		<#Computer+vision> ,
+		<#Coronal+holes> ,
+		<#EUV+Image> ,
+		<#Image+segmentation>
+		;
+	CfHA:collaboratesWithGroup <#Klipsch+School+of+Electrical+and+Computer+Engineering> ;
+	CfHA:familyName "Boucheron" ;
+	CfHA:givenName "Laura" ;
+	CfHA:inGroup <#New+Mexico+State+University> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:LewisMcGibbney
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Lewis McGibbney" ;
+	CfHA:associatedWithTopic
+		<#Data+integration+system> ,
+		<#Data+science> ,
+		<#Information+representation> ,
+		<#Knowledge+graph> ,
+		<#Knowledge+network> ,
+		<#Knowledge+system> ,
+		CfHA:Ontology ,
+		<#Open+source>
+		;
+	CfHA:collaboratesWithGroup <#Computer+Science+for+Data+Intensive+Systems+Group+398M> ;
+	CfHA:familyName "McGibbney" ;
+	CfHA:givenName "Lewis" ;
+	CfHA:inGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:LiamKilcommons
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Liam Kilcommons" ;
+	CfHA:associatedWithTopic
+		<#Data+assimilation> ,
+		<#Data+integration+system> ,
+		<#Data+science+education> ,
+		<#Open+source> ,
+		CfHA:Python
+		;
+	CfHA:collaboratesWithGroup <#Aerospace+Engineering+Sciences> ;
+	CfHA:familyName "Kilcommons" ;
+	CfHA:givenName "Liam" ;
+	CfHA:inGroup <#University+of+Colorado> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+<#Lockheed+Martin>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Lockheed Martin" ;
+	.
+
+CfHA:LuizGuedesDosSantos
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Luiz Guedes dos Santos" ;
+	CfHA:associatedWithTopic
+		CfHA:DCNN ,
+		<#Flux+Ropes> ,
+		CfHA:ICME ,
+		CfHA:ML ,
+		<#Supervised+ML>
+		;
+	CfHA:collaboratesWithGroup <#Code+672> ;
+	CfHA:familyName "dos Santos" ;
+	CfHA:givenName "Luiz Guedes" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Published+a+paper>
+		;
+	.
+
+CfHA:LukasMandrake
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Lukas Mandrake" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Information+representation> ,
+		<#Knowledge+capture> ,
+		CfHA:ML
+		;
+	CfHA:collaboratesWithGroup <#Machine+Learning+and+Instrument+Autonomy> ;
+	CfHA:familyName "Mandrake" ;
+	CfHA:givenName "Lukas" ;
+	CfHA:inGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:ML
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ML" ;
+	.
+
+<#ML+Traceability>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ML Traceability" ;
+	.
+
+<#ML+development>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ML development" ;
+	.
+
+<#ML+encoders>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ML encoders" ;
+	.
+
+<#ML+techniques>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ML techniques" ;
+	.
+
+CfHA:ML-helio
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "ML-helio" ;
+	.
+
+<#Machine+Learning+and+Instrument+Autonomy>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Machine Learning and Instrument Autonomy" ;
+	CfHA:partOfGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	.
+
+<#Machine+instrumentation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Machine instrumentation" ;
+	.
+
+CfHA:MarkCarroll
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Mark Carroll" ;
+	CfHA:associatedWithTopic
+		<#Data+discovery> ,
+		<#Data+science+education> ,
+		<#Earth+science> ,
+		CfHA:ML ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Computational+and+Information+Sciences+and+Technology+Office+%28CISTO%29> ;
+	CfHA:familyName "Carroll" ;
+	CfHA:givenName "Mark" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Coordinated+cross-Center+collaboration+with+JPL> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:MarkCheung
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Mark Cheung" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		CfHA:Education ,
+		CfHA:ML ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup CfHA:Astrophysics ;
+	CfHA:familyName "Cheung" ;
+	CfHA:givenName "Mark" ;
+	CfHA:inGroup <#Lockheed+Martin> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:MartinReiÃŸ
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Martin ReiÃŸ" ;
+	CfHA:associatedWithTopic
+		<#Coronal+holes> ,
+		<#EUV+Image> ,
+		<#Feature+identification> ,
+		<#Image+segmentation> ,
+		<#Validation+studies>
+		;
+	CfHA:collaboratesWithGroup <#Space+Research+Institute> ;
+	CfHA:familyName "ReiÃŸ" ;
+	CfHA:givenName "Martin" ;
+	CfHA:inGroup <#Austrian+Academy+of+Sciences> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+<#Massachusetts+Institute+of+Technology>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Massachusetts Institute of Technology" ;
+	.
+
+CfHA:MassimoMascaro
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Massimo Mascaro" ;
+	CfHA:associatedWithTopic
+		CfHA:AI ,
+		CfHA:ML
+		;
+	CfHA:collaboratesWithGroup <#Google+AI> ;
+	CfHA:familyName "Mascaro" ;
+	CfHA:givenName "Massimo" ;
+	CfHA:inGroup CfHA:Google ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:Match
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Activity ;
+	rdfs:label "Match" ;
+	.
+
+CfHA:Materials
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Input ;
+	rdfs:comment "Materials" ;
+	.
+
+CfHA:MattPenn
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Matt Penn" ;
+	CfHA:associatedWithTopic
+		CfHA:Clustering ,
+		CfHA:EIT ,
+		<#EUV+Image> ,
+		CfHA:GPU ,
+		CfHA:K-means ,
+		<#SDO+AIA> ,
+		CfHA:STEREO ,
+		CfHA:Segmentation ,
+		CfHA:U-net ,
+		CfHA:W-net
+		;
+	CfHA:collaboratesWithGroup <#HPC%2BAI+Business+Development> ;
+	CfHA:familyName "Penn" ;
+	CfHA:givenName "Matt" ;
+	CfHA:inGroup CfHA:NVIDIA ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:MatthewArgall
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Matthew Argall" ;
+	CfHA:associatedWithTopic
+		<#Data+science+education> ,
+		CfHA:ML ,
+		<#Workshop+planning>
+		;
+	CfHA:familyName "Argall" ;
+	CfHA:givenName "Matthew" ;
+	CfHA:inGroup <#GEM%2FCEDAR%2FSHINE+ML+Exploratory+Committee> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:MatthewDosberg
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Matthew Dosberg" ;
+	CfHA:associatedWithTopic
+		<#Data+science+education> ,
+		<#Digital+transformation> ,
+		<#Information+representation>
+		;
+	CfHA:collaboratesWithGroup <#ITCD+Solutions+Division+Code+730> ;
+	CfHA:familyName "Dosberg" ;
+	CfHA:givenName "Matthew" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+<#McIntosh+Archive>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "McIntosh Archive" ;
+	.
+
+<#Media+Lab>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Media Lab" ;
+	CfHA:partOfGroup <#Massachusetts+Institute+of+Technology> ;
+	.
+
+CfHA:Meet
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Affiliate ;
+	rdfs:label "Meet" ;
+	.
+
+CfHA:Meeting
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Activity ;
+	rdfs:label "Meeting" ;
+	.
+
+<#Metrics+and+Validation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Metrics and Validation" ;
+	.
+
+CfHA:MichaelKirk
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Michael Kirk" ;
+	CfHA:familyName "Michael" ;
+	CfHA:givenName "Kirk" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:inSubGroup <#Code+671> ;
+	.
+
+CfHA:MichaelSKirk
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Michael S Kirk" ;
+	CfHA:associatedWithTopic
+		CfHA:AIA ,
+		<#AIA+Prepping+pipeline> ,
+		<#AIA+prep> ,
+		<#Active+Contours+without+Edges> ,
+		<#Big+data> ,
+		CfHA:CME ,
+		CfHA:CMEs ,
+		CfHA:CUDA ,
+		<#Class+imbalance> ,
+		CfHA:Clustering ,
+		<#Computer+resources> ,
+		<#Computer+vision> ,
+		<#Conference+organization> ,
+		CfHA:Coronagraphs ,
+		<#Coronal+holes> ,
+		CfHA:DASK ,
+		CfHA:DCNN ,
+		<#Data+infrastructure> ,
+		<#Data+science+workstation> ,
+		<#Database+development> ,
+		CfHA:EIT ,
+		<#EIT+prep> ,
+		CfHA:EPSCOR ,
+		<#EUV+Corona> ,
+		<#EUV+Image> ,
+		<#Edge+detection> ,
+		<#Feature+evolution> ,
+		<#Feature+identification> ,
+		<#Flux+Ropes> ,
+		CfHA:GMM ,
+		CfHA:GPU ,
+		CfHA:Gitlab ,
+		<#Graduate+student> ,
+		<#Graphic+design> ,
+		CfHA:HPC ,
+		<#HPC+communications> ,
+		CfHA:Hackathon ,
+		<#Helio+HPC> ,
+		CfHA:Heliophysics ,
+		CfHA:ICME ,
+		<#Image+analysis> ,
+		<#Image+compression> ,
+		<#Image+enhancement> ,
+		<#Image+pipelines> ,
+		<#Image+prep> ,
+		<#Image+segmentation> ,
+		<#Information+Design> ,
+		<#Intern+mentoring> ,
+		CfHA:K-means ,
+		CfHA:LASCO ,
+		CfHA:ML ,
+		<#ML+Traceability> ,
+		<#ML+development> ,
+		<#ML+encoders> ,
+		<#ML+techniques> ,
+		CfHA:ML-helio ,
+		<#Model+development> ,
+		<#Noise+analysis> ,
+		CfHA:Parallelization ,
+		CfHA:Podcast ,
+		<#Prism+cluster> ,
+		<#Project+coordination> ,
+		CfHA:Python ,
+		CfHA:RAPIDS ,
+		<#SDO+AIA> ,
+		CfHA:SHIPWork ,
+		CfHA:STEREO ,
+		<#Science+communication> ,
+		CfHA:Scrum ,
+		<#Scrum+development> ,
+		CfHA:Segmentation ,
+		<#Software+development> ,
+		<#Solar+cycle> ,
+		<#Solar+eclipse> ,
+		<#Space+Weather> ,
+		<#Student+mentorship> ,
+		CfHA:Sunpy ,
+		<#Supervised+ML> ,
+		<#Synchronic+maps> ,
+		<#Synoptic+images> ,
+		<#Synoptic+maps> ,
+		CfHA:U-net ,
+		<#Unsupervised+ML> ,
+		<#Validation+studies> ,
+		CfHA:W-net ,
+		CfHA:WSA ,
+		CfHA:Webinar ,
+		CfHA:Yolo ,
+		CfHA:Z
+		;
+	CfHA:collaboratesWithGroup
+		<#Code+671> ,
+		<#Code+672> ,
+		<#Code+673> ,
+		<#Data+Science+-+SAF%2FCO> ,
+		<#Department+of+Mechanical+and+Aerospace+Engineering> ,
+		<#Federal+Account+Manager> ,
+		<#Global+Director%2C+Business+Development%2C+Data+Science> ,
+		<#HP+Federal+Civilian+%26+SI> ,
+		<#HPC%2BAI+Business+Development> ,
+		CfHA:JH000 ,
+		<#Klipsch+School+of+Electrical+and+Computer+Engineering> ,
+		CfHA:LASP ,
+		<#McIntosh+Archive> ,
+		<#Multiscale+Dynamics> ,
+		<#RAPIDS+ML%2FAI> ,
+		CfHA:SWPC ,
+		<#School+of+Arts+and+Communication> ,
+		<#Solar+Frontiers+Section> ,
+		<#Space+Research+Institute> ,
+		<#Space+Science+Division>
+		;
+	CfHA:familyName "Kirk" ;
+	CfHA:givenName "Micheal" ;
+	CfHA:inGroup <#Center+for+HelioAnalytics> ;
+	CfHA:middleName "S" ;
+	CfHA:relatedToPerson
+		CfHA:AjayTiwari ,
+		<#BenoÃ®tTrembay> ,
+		CfHA:BrainFurtaw ,
+		CfHA:BrianThomas ,
+		CfHA:C.NickArge ,
+		CfHA:DanielDaSilva ,
+		CfHA:DavidM.Hall ,
+		CfHA:DeannGarcia ,
+		CfHA:EnricoCamporeale ,
+		CfHA:GeoffreyLevene ,
+		CfHA:IanHewins ,
+		CfHA:JamesStockton ,
+		CfHA:JeffSmith ,
+		CfHA:JeremyGrajeda ,
+		CfHA:JimHooks ,
+		CfHA:LauraBoucheron ,
+		CfHA:LuizGuedesDosSantos ,
+		CfHA:MarkCarroll ,
+		CfHA:MartinReiÃŸ ,
+		CfHA:MattPenn ,
+		CfHA:NathaliaAlzate ,
+		CfHA:PiyushMehta ,
+		CfHA:RaphaelAttie ,
+		CfHA:TomSardelis ,
+		CfHA:WillBarnes
+		;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:Mission
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Activity ;
+	rdfs:label "Mission" ;
+	.
+
+<#Mission+design>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Mission design" ;
+	.
+
+<#Model+development>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Model development" ;
+	.
+
+<#Model+validation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Model validation" ;
+	.
+
+CfHA:Motivation
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Input ;
+	rdfs:comment "Motivation" ;
+	.
+
+<#Multiscale+Dynamics>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Multiscale Dynamics" ;
+	CfHA:partOfGroup <#Centrum+WIskunde+%26+Informatica> ;
+	.
+
+<#Multiscale+science>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Multiscale science" ;
+	.
+
+<#NASA+Goddard+Space+Flight+Center>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "NASA Goddard Space Flight Center" ;
+	.
+
+<#NASA+Headquarters>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "NASA Headquarters" ;
+	.
+
+<#NASA+Jet+Propulsion+Laboratory>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "NASA Jet Propulsion Laboratory" ;
+	.
+
+<#NCAR+HAO>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "NCAR HAO" ;
+	.
+
+CfHA:NESDIS
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "NESDIS" ;
+	CfHA:partOfGroup <#National+Oceanic+and+Atmospheric+Administration> ;
+	.
+
+CfHA:NVIDIA
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "NVIDIA" ;
+	.
+
+CfHA:NargessMemarsadeghi
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Nargess Memarsadeghi" ;
+	CfHA:associatedWithTopic
+		<#Data+science+education> ,
+		<#High+performance+computing> ,
+		<#Information+representation> ,
+		CfHA:ML
+		;
+	CfHA:collaboratesWithGroup <#Software+Engineering+Division+Code+580> ;
+	CfHA:familyName "Memarsadeghi" ;
+	CfHA:givenName "Nargess" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Coordinated+cross-Center+collaboration+with+JPL> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:NathaliaAlzate
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Nathalia Alzate" ;
+	CfHA:associatedWithTopic
+		CfHA:CME ,
+		CfHA:Coronagraphs ,
+		<#Image+enhancement> ,
+		CfHA:LASCO ,
+		CfHA:ML ,
+		<#Noise+analysis> ,
+		CfHA:SHIPWork
+		;
+	CfHA:collaboratesWithGroup <#Code+671> ;
+	CfHA:familyName "Alzate" ;
+	CfHA:givenName "Nathalia" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Coordinated+cross-Center+collaboration+with+JPL> ,
+		<#ISSI+Team> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+<#National+Oceanic+and+Atmospheric+Administration>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "National Oceanic and Atmospheric Administration" ;
+	.
+
+<#National+Science+Foundation>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "National Science Foundation" ;
+	.
+
+<#Network+for+Earth-space+Research%2C+Education+and+Innovation+with+Data>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Network for Earth-space Research, Education and Innovation with Data" ;
+	.
+
+<#Network+science>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Network science" ;
+	.
+
+<#Neural+networks>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Neural networks" ;
+	.
+
+<#New+Jersey+Institute+of+Technology>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "New Jersey Institute of Technology" ;
+	.
+
+<#New+Mexico+State+University>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "New Mexico State University" ;
+	.
+
+<#Noise+analysis>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Noise analysis" ;
+	.
+
+<#North+Carolina+Institute+for+Climate+Studies+%28NCICS%29>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "North Carolina Institute for Climate Studies (NCICS)" ;
+	CfHA:partOfGroup <#North+Carolina+State+University> ;
+	.
+
+<#North+Carolina+State+University>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "North Carolina State University" ;
+	.
+
+CfHA:Object
+	a owl:Class ;
+	rdfs:label "Object" ;
+	.
+
+CfHA:OlgaVerkhoglyadova
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Olga Verkhoglyadova" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Multiscale+science>
+		;
+	CfHA:collaboratesWithGroup <#Ionospheric+and+Remote+Sensing+Group> ;
+	CfHA:familyName "Verkhoglyadova" ;
+	CfHA:givenName "Olga" ;
+	CfHA:inGroup <#NASA+Jet+Propulsion+Laboratory> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:Ontology
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Ontology" ;
+	.
+
+<#Open+source>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Open source" ;
+	.
+
+<#Oregon+State+University>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Oregon State University" ;
+	.
+
+CfHA:Organization
+	a owl:Class ;
+	rdfs:label "Organization" ;
+	.
+
+CfHA:Other
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Organization ;
+	rdfs:label "Other" ;
+	.
+
+CfHA:Output
+	a owl:Class ;
+	rdfs:label "Output" ;
+	.
+
+CfHA:Paper
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Publication ;
+	rdfs:label "Paper" ;
+	.
+
+CfHA:Parallelization
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Parallelization" ;
+	.
+
+<#Part+of+an+unfunded+working+group>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "Part of an unfunded working group" ;
+	.
+
+CfHA:Partner
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Affiliate ;
+	rdfs:label "Partner" ;
+	.
+
+CfHA:Person
+	a owl:Class ;
+	rdfs:label "Person" ;
+	owl:disjointWith CfHA:Topic ;
+	.
+
+CfHA:Physics
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Physics" ;
+	.
+
+<#Physics+and+Astronomy>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Physics and Astronomy" ;
+	CfHA:partOfGroup <#University+of+Calgary> ;
+	.
+
+CfHA:PiyushMehta
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Piyush Mehta" ;
+	CfHA:associatedWithTopic
+		CfHA:AIA ,
+		CfHA:EPSCOR ,
+		<#Image+compression> ,
+		<#ML+encoders>
+		;
+	CfHA:collaboratesWithGroup <#Department+of+Mechanical+and+Aerospace+Engineering> ;
+	CfHA:familyName "Mehta" ;
+	CfHA:givenName "Piyush" ;
+	CfHA:inGroup <#West+Virginia+University> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:PlanetaryScience
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Topic ;
+	.
+
+CfHA:Podcast
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Podcast" ;
+	.
+
+CfHA:Position
+	a owl:Class ;
+	rdfs:label "Position" ;
+	.
+
+<#Predictive+models>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Predictive models" ;
+	.
+
+CfHA:Presentation
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Event ;
+	rdfs:label "Presentation" ;
+	.
+
+<#Prism+cluster>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Prism cluster" ;
+	.
+
+CfHA:Process
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Activity ;
+	.
+
+CfHA:Program
+	a owl:Class ;
+	rdfs:label "Program" ;
+	.
+
+CfHA:Project
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Activity ;
+	rdfs:label "Project" ;
+	.
+
+<#Project+coordination>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Project coordination" ;
+	.
+
+CfHA:Publication
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Output ;
+	rdfs:label "Publication" ;
+	.
+
+<#Published+a+paper>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "Published a paper, software, or dataset" ;
+	.
+
+CfHA:Python
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Python" ;
+	.
+
+CfHA:Quality
+	a owl:DatatypeProperty ;
+	rdfs:label "Quality" ;
+	rdfs:domain
+		CfHA:Action ,
+		CfHA:Activity ,
+		CfHA:Domainn ,
+		CfHA:Event ,
+		CfHA:Funds ,
+		CfHA:Input ,
+		CfHA:Object ,
+		CfHA:Organization ,
+		CfHA:Other ,
+		CfHA:Output ,
+		CfHA:Person ,
+		CfHA:Position ,
+		CfHA:Program ,
+		CfHA:Role ,
+		CfHA:Skill ,
+		CfHA:Team ,
+		CfHA:Topic
+		;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:Quantity
+	a owl:DatatypeProperty ;
+	rdfs:label "Quantity" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:double ;
+	.
+
+CfHA:RAPIDS
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "RAPIDS" ;
+	.
+
+<#RAPIDS+ML%2FAI>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "RAPIDS ML/AI" ;
+	CfHA:partOfGroup CfHA:NVIDIA ;
+	.
+
+<#Radiation+belts>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Radiation belts" ;
+	.
+
+CfHA:RajeshGupta
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Rajesh Gupta" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Data+science+education> ,
+		<#Information+representation> ,
+		CfHA:ML ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Department+of+Computer+Science+%26+Engineering> ;
+	CfHA:familyName "Gupta" ;
+	CfHA:givenName "Rajesh" ;
+	CfHA:inGroup <#University+of+California+San+Diego> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:RaphaelAttie
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Raphael Attie" ;
+	CfHA:associatedWithTopic
+		<#Big+data> ,
+		<#Database+development> ,
+		CfHA:Heliophysics ,
+		<#Image+analysis> ,
+		<#SDO+AIA> ,
+		<#Software+development>
+		;
+	CfHA:collaboratesWithGroup <#Code+671> ;
+	CfHA:familyName "Attie" ;
+	CfHA:givenName "Raphael" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:worksOn
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:Resource
+	a owl:DatatypeProperty ;
+	rdfs:label "Resource" ;
+	rdfs:domain
+		CfHA:Action ,
+		CfHA:Activity ,
+		CfHA:Domainn ,
+		CfHA:Event ,
+		CfHA:Funds ,
+		CfHA:Input ,
+		CfHA:Object ,
+		CfHA:Organization ,
+		CfHA:Other ,
+		CfHA:Output ,
+		CfHA:Person ,
+		CfHA:Position ,
+		CfHA:Program ,
+		CfHA:Role ,
+		CfHA:Skill ,
+		CfHA:Team ,
+		CfHA:Topic
+		;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:RobReadmon
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Rob Readmon" ;
+	CfHA:associatedWithTopic
+		CfHA:Benchmarking ,
+		<#Metrics+and+Validation> ,
+		CfHA:SWORM ,
+		<#Space+Weather>
+		;
+	CfHA:collaboratesWithGroup CfHA:NESDIS ;
+	CfHA:familyName "Readmon" ;
+	CfHA:givenName "Rob" ;
+	CfHA:inGroup <#National+Oceanic+and+Atmospheric+Administration> ;
+	CfHA:worksOn <#Worked+on+a+funded+project> ;
+	.
+
+CfHA:Role
+	a owl:Class ;
+	rdfs:label "Role" ;
+	.
+
+CfHA:RyanMcGranaghan
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Ryan McGranaghan" ;
+	CfHA:associatedWithTopic
+		CfHA:AI ,
+		<#Auroral+physics> ,
+		<#Auto+ML> ,
+		<#Big+data> ,
+		<#Complex+system> ,
+		CfHA:Convergence ,
+		CfHA:Cross-disciplinary ,
+		CfHA:Cubesat ,
+		<#Data+System> ,
+		<#Data+assimilation> ,
+		<#Data+discovery> ,
+		<#Data+integration+system> ,
+		<#Data+science> ,
+		<#Data+science+education> ,
+		<#Data+science+policy> ,
+		<#Digital+transformation> ,
+		<#Earth+science> ,
+		CfHA:Education ,
+		CfHA:Engineering ,
+		<#Feature+selection> ,
+		<#High+performance+computing> ,
+		<#Information+representation> ,
+		<#Instrument+design> ,
+		CfHA:Ionosphere ,
+		CfHA:Java ,
+		<#Knowledge+graph> ,
+		<#Knowledge+network> ,
+		<#Knowledge+system> ,
+		CfHA:ML ,
+		<#ML+development> ,
+		<#Mission+design> ,
+		<#Multiscale+science> ,
+		<#Network+science> ,
+		CfHA:Ontology ,
+		<#Open+source> ,
+		CfHA:Physics ,
+		<#Predictive+models> ,
+		CfHA:Python ,
+		<#Scientific+discovery> ,
+		<#Space+Systems> ,
+		<#Space+environment> ,
+		CfHA:Statistics ,
+		CfHA:Sustainability ,
+		<#User+design> ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup
+		<#Aerospace+Engineering+Sciences> ,
+		<#Ann+and+H.J.+Smead+Department+of+Aerospace+Engineering+Sciences> ,
+		<#Applied+Physics+Laboratory> ,
+		CfHA:Astrophysics ,
+		<#Center+for+Space+Plasma+Physics> ,
+		<#Code+7630> ,
+		<#College+of+Engineering> ,
+		<#Computational+and+Information+Sciences+and+Technology+Office+%28CISTO%29> ,
+		<#Computer+Science+for+Data+Intensive+Systems+Group+398M> ,
+		<#Cooperative+Institute+for+Research+in+Environmental+Sciences> ,
+		<#Data+Science+Department> ,
+		<#Data+Science+Working+Group> ,
+		<#Defense+Sciences+Office> ,
+		<#Department+of+Atmospheric+and+Oceanic+Sciences> ,
+		<#Department+of+Computer+Science+%26+Engineering> ,
+		<#Department+of+Physics+and+Astronomy> ,
+		<#Earth+Planetary+and+Space+Sciences> ,
+		<#Earth+and+Space+Science+Department> ,
+		<#Geospace+Studies> ,
+		<#Google+AI> ,
+		<#Harnessing+the+Data+Revolution> ,
+		<#ITCD+Solutions+Division+Code+730> ,
+		<#Institute+for+Space+Weather+Sciences> ,
+		<#Ionospheric+and+Remote+Sensing+Group> ,
+		<#Laboratory+for+Atmospheric+and+Space+Physics> ,
+		<#Machine+Learning+and+Instrument+Autonomy> ,
+		<#North+Carolina+Institute+for+Climate+Studies+%28NCICS%29> ,
+		<#Physics+and+Astronomy> ,
+		<#Software+Engineering+Division+Code+580> ,
+		<#Space+Environment+Modeling+Group> ,
+		<#Space+Physics>
+		;
+	CfHA:familyName "McGranaghan" ;
+	CfHA:givenName "Ryan" ;
+	CfHA:inGroup <#Center+for+HelioAnalytics> ;
+	CfHA:relatedToPerson
+		CfHA:AdamKellerman ,
+		CfHA:AmyWalton ,
+		CfHA:AstiBhatt ,
+		CfHA:BrianWilson ,
+		CfHA:BruceFritz ,
+		CfHA:DanCrichton ,
+		CfHA:DanielDuffy ,
+		CfHA:DanielleWood ,
+		CfHA:DavidMatteson ,
+		CfHA:DouglasRao ,
+		CfHA:EnricoCamporeale ,
+		CfHA:EricDonovan ,
+		CfHA:GregLucas ,
+		CfHA:HaimanWang ,
+		CfHA:IrinaZhelavskaya ,
+		CfHA:JacobBortnik ,
+		CfHA:JenniferKnuth ,
+		CfHA:JesperGjerloev ,
+		CfHA:JoeBorovksy ,
+		CfHA:JoshSemeter ,
+		CfHA:KristinaLynch ,
+		CfHA:LauraBiven ,
+		CfHA:LewisMcGibbney ,
+		CfHA:LiamKilcommons ,
+		CfHA:LukasMandrake ,
+		CfHA:MarkCarroll ,
+		CfHA:MarkCheung ,
+		CfHA:MassimoMascaro ,
+		CfHA:MatthewArgall ,
+		CfHA:MatthewDosberg ,
+		CfHA:NargessMemarsadeghi ,
+		CfHA:OlgaVerkhoglyadova ,
+		CfHA:RajeshGupta ,
+		CfHA:SimonWing ,
+		CfHA:SusanSkone ,
+		CfHA:TimothySpuck ,
+		CfHA:TomokoMatsuo ,
+		<#TÃ©oBloch> ,
+		<#tColCharltonDavidLewis,II>
+		;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Coordinated+cross-Center+collaboration+with+JPL> ,
+		<#JPL+Mission+Design+School> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+<#SDO+AIA>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "SDO AIA" ;
+	.
+
+CfHA:SHIPWork
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "SHIPWork" ;
+	.
+
+<#SRI+International>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "SRI International" ;
+	.
+
+CfHA:STEREO
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "STEREO" ;
+	.
+
+CfHA:SWORM
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "SWORM" ;
+	.
+
+CfHA:SWPC
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "SWPC" ;
+	CfHA:partOfGroup <#National+Oceanic+and+Atmospheric+Administration> ;
+	.
+
+<#School+of+Arts+and+Communication>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "School of Arts and Communication" ;
+	CfHA:partOfGroup <#Oregon+State+University> ;
+	.
+
+<#Science+communication>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Science communication" ;
+	.
+
+<#Scientific+discovery>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Scientific discovery" ;
+	.
+
+CfHA:Scrum
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Scrum" ;
+	.
+
+<#Scrum+development>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Scrum development" ;
+	.
+
+CfHA:Segmentation
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Segmentation" ;
+	.
+
+CfHA:SimonWing
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Simon Wing" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		<#Information+theory> ,
+		CfHA:ML ,
+		<#Workshop+planning>
+		;
+	CfHA:collaboratesWithGroup <#Applied+Physics+Laboratory> ;
+	CfHA:familyName "Wing" ;
+	CfHA:givenName "Simon" ;
+	CfHA:inGroup <#Johns+Hopkins+University> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:Skill
+	a owl:Class ;
+	rdfs:label "Skill" ;
+	.
+
+CfHA:Software
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Publication ;
+	rdfs:label "Software" ;
+	.
+
+<#Software+Engineering+Division+Code+580>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Software Engineering Division Code 580" ;
+	CfHA:partOfGroup <#NASA+Goddard+Space+Flight+Center> ;
+	.
+
+<#Software+development>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Software development" ;
+	.
+
+<#Solar+Frontiers+Section>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Solar Frontiers Section" ;
+	CfHA:partOfGroup <#NCAR+HAO> ;
+	.
+
+<#Solar+cycle>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Solar cycle" ;
+	.
+
+<#Solar+eclipse>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Solar eclipse" ;
+	.
+
+<#Space+Environment+Modeling+Group>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Space Environment Modeling Group" ;
+	CfHA:partOfGroup <#GFZ+Potsdam> ;
+	.
+
+<#Space+Physics>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Space Physics" ;
+	CfHA:partOfGroup CfHA:LANL ;
+	.
+
+<#Space+Research+Institute>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Space Research Institute" ;
+	CfHA:partOfGroup <#Austrian+Academy+of+Sciences> ;
+	.
+
+<#Space+Science+Division>
+	a
+		owl:NamedIndividual ,
+		CfHA:Group
+		;
+	rdfs:label "Space Science Division" ;
+	CfHA:partOfGroup <#U.S.+Naval+Research+Laboratory> ;
+	.
+
+<#Space+Science+Institute>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Space Science Institute" ;
+	.
+
+<#Space+Systems>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Space Systems" ;
+	.
+
+<#Space+Weather>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Space Weather" ;
+	.
+
+<#Space+environment>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Space environment" ;
+	.
+
+CfHA:Statistics
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Statistics" ;
+	.
+
+CfHA:SteveMorley
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Steve Morley" ;
+	CfHA:associatedWithTopic
+		<#EMIC+waves> ,
+		<#Metrics+and+Validation> ,
+		<#Radiation+belts> ,
+		CfHA:Statistics ,
+		CfHA:Substorms
+		;
+	CfHA:collaboratesWithGroup <#Space+Physics> ;
+	CfHA:familyName "Morley" ;
+	CfHA:givenName "Steve" ;
+	CfHA:inGroup CfHA:LANL ;
+	CfHA:worksOn
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+<#Student+mentorship>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Student mentorship" ;
+	.
+
+CfHA:Substorms
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Substorms" ;
+	.
+
+CfHA:Sunpy
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Sunpy" ;
+	.
+
+<#Supervised+ML>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Supervised ML" ;
+	.
+
+CfHA:SusanSkone
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Susan Skone" ;
+	CfHA:associatedWithTopic
+		<#Auroral+physics> ,
+		<#Data+science> ,
+		<#Information+representation> ,
+		<#Information+systems> ,
+		CfHA:ML
+		;
+	CfHA:collaboratesWithGroup <#Department+of+Physics+and+Astronomy> ;
+	CfHA:familyName "Skone" ;
+	CfHA:givenName "Susan" ;
+	CfHA:inGroup <#University+of+Calgary> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group>
+		;
+	.
+
+CfHA:Sustainability
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Sustainability" ;
+	.
+
+<#Synchronic+maps>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Synchronic maps" ;
+	.
+
+<#Synoptic+images>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Synoptic images" ;
+	.
+
+<#Synoptic+maps>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Synoptic maps" ;
+	.
+
+CfHA:Team
+	a owl:Class ;
+	rdfs:label "Team" ;
+	.
+
+CfHA:TeresaNieves-Chinchilla
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Teresa Nieves-Chinchilla" ;
+	CfHA:familyName "Nieves-Chinchilla" ;
+	CfHA:givenName "Teresa" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:inSubGroup <#Code+672> ;
+	CfHA:publishedOn
+		CfHA:CNN ,
+		<#Deep+learning> ,
+		<#Flux+Ropes> ,
+		CfHA:ICME
+		;
+	CfHA:worksOn <#Published+a+paper> ;
+	.
+
+CfHA:ThomasNarock
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Thomas Narock" ;
+	CfHA:familyName "Narock" ;
+	CfHA:givenName "Thomas" ;
+	CfHA:inGroup <#Goucher+College> ;
+	CfHA:inSubGroup <#Center+for+Data%2C+Mathematical%2C+%26+Computational+Sciences> ;
+	.
+
+CfHA:TimothySpuck
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Timothy Spuck" ;
+	CfHA:associatedWithTopic
+		<#Data+science+education> ,
+		<#Information+representation> ,
+		<#Workshop+planning>
+		;
+	CfHA:familyName "Spuck" ;
+	CfHA:givenName "Timothy" ;
+	CfHA:inGroup <#Network+for+Earth-space+Research%2C+Education+and+Innovation+with+Data> ;
+	CfHA:worksOn
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:TomSardelis
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Tom Sardelis" ;
+	CfHA:associatedWithTopic
+		<#Computer+resources> ,
+		<#Data+science+workstation> ,
+		CfHA:HPC
+		;
+	CfHA:collaboratesWithGroup <#Federal+Account+Manager> ;
+	CfHA:familyName "Sardelis" ;
+	CfHA:givenName "Tom" ;
+	CfHA:inGroup <#HP+Inc.> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:TomokoMatsuo
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Tomoko Matsuo" ;
+	CfHA:associatedWithTopic
+		<#Data+assimilation> ,
+		<#Data+integration+system> ,
+		<#Data+science+education>
+		;
+	CfHA:collaboratesWithGroup <#Ann+and+H.J.+Smead+Department+of+Aerospace+Engineering+Sciences> ;
+	CfHA:familyName "Matsuo" ;
+	CfHA:givenName "Tomoko" ;
+	CfHA:inGroup <#University+of+Colorado> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:Topic
+	a owl:Class ;
+	rdfs:label "Topic" ;
+	.
+
+<#Type+III+radio+bursts>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Type III radio bursts" ;
+	.
+
+<#TÃ©oBloch>
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "TÃ©o Bloch" ;
+	CfHA:associatedWithTopic
+		<#Data+science> ,
+		CfHA:ML ,
+		CfHA:Python
+		;
+	CfHA:collaboratesWithGroup <#Space+Physics> ;
+	CfHA:familyName "Bloch" ;
+	CfHA:givenName "TÃ©o" ;
+	CfHA:inGroup <#University+of+Reading> ;
+	CfHA:worksOn
+		<#Co-authored+a+presentation%2Fconference+abstract> ,
+		<#Convened+a+conference%2Fworkshop+session> ,
+		<#Part+of+an+unfunded+working+group> ,
+		<#Published+a+paper> ,
+		<#Worked+on+a+funded+project>
+		;
+	.
+
+CfHA:U-net
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "U-net" ;
+	.
+
+<#U.S.+Naval+Research+Laboratory>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "Naval Research Laboratory" ;
+	.
+
+CfHA:UCLA
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "UCLA" ;
+	.
+
+CfHA:UTA
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "UTA" ;
+	.
+
+<#University+of+Calgary>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "University of Calgary" ;
+	.
+
+<#University+of+California+San+Diego>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "University of California San Diego" ;
+	.
+
+<#University+of+Colorado>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "University of Colorado Boulder" ;
+	.
+
+<#University+of+Reading>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "University of Reading" ;
+	.
+
+<#Unsupervised+ML>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Unsupervised ML" ;
+	.
+
+<#User+design>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "User design" ;
+	.
+
+<#Validation+studies>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Validation studies" ;
+	.
+
+CfHA:VratislavKrupar
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Vratislav Krupar" ;
+	CfHA:familyName "Krupar" ;
+	CfHA:givenName "Vratislav" ;
+	CfHA:inGroup <#NASA+Goddard+Space+Flight+Center> ;
+	CfHA:inSubGroup <#Code+672> ;
+	.
+
+CfHA:W-net
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "W-net" ;
+	.
+
+CfHA:WSA
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "WSA" ;
+	.
+
+CfHA:Webinar
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Webinar" ;
+	.
+
+<#West+Virginia+University>
+	a
+		owl:NamedIndividual ,
+		CfHA:Organization
+		;
+	rdfs:label "West Virginia University" ;
+	.
+
+CfHA:WillBarnes
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "Will Barnes" ;
+	CfHA:associatedWithTopic
+		CfHA:GPU ,
+		<#Image+pipelines> ,
+		<#Image+prep> ,
+		<#SDO+AIA>
+		;
+	CfHA:collaboratesWithGroup <#Space+Science+Division> ;
+	CfHA:familyName "Barnes" ;
+	CfHA:givenName "Will" ;
+	CfHA:inGroup <#U.S.+Naval+Research+Laboratory> ;
+	CfHA:worksOn <#Part+of+an+unfunded+working+group> ;
+	.
+
+CfHA:Wind
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Wind" ;
+	.
+
+<#Worked+on+a+funded+project>
+	a
+		owl:NamedIndividual ,
+		CfHA:Project
+		;
+	rdfs:label "Worked on a funded project" ;
+	.
+
+CfHA:Workshop
+	a owl:Class ;
+	rdfs:subClassOf CfHA:Event ;
+	rdfs:label "Workshop" ;
+	.
+
+<#Workshop+planning>
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Workshop planning" ;
+	.
+
+CfHA:Yolo
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Yolo" ;
+	.
+
+CfHA:Z
+	a
+		owl:NamedIndividual ,
+		CfHA:Topic
+		;
+	rdfs:label "Z" ;
+	.
+
+CfHA:areRelated
+	a owl:ObjectProperty ;
+	rdfs:label "areRelated" ;
+	rdfs:domain CfHA:Object ;
+	rdfs:range CfHA:Object ;
+	.
+
+CfHA:associatedWithProcess
+	a owl:ObjectProperty ;
+	rdfs:label "associatedWithProcess" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Process ;
+	.
+
+CfHA:associatedWithProject
+	a owl:ObjectProperty ;
+	rdfs:label "associatedWithProject" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Project ;
+	.
+
+CfHA:associatedWithTopic
+	a
+		owl:ObjectProperty ,
+		owl:TransitiveProperty
+		;
+	rdfs:label "associatedWithTopic" ;
+	rdfs:comment "Describes what Topic an Individual, Group, or Project is associated with." ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Topic ;
+	.
+
+CfHA:attended
+	a owl:ObjectProperty ;
+	rdfs:label "attended" ;
+	rdfs:domain
+		CfHA:Organization ,
+		CfHA:Team
+		;
+	rdfs:range CfHA:Event ;
+	.
+
+CfHA:coProduces
+	a owl:ObjectProperty ;
+	rdfs:label "coProduces" ;
+	rdfs:domain [
+		a owl:Class ;
+		owl:unionOf (
+			CfHA:Group
+			CfHA:Person
+		) ;
+	] ;
+	rdfs:range CfHA:Project ;
+	.
+
+CfHA:collaborateWithPartner
+	a owl:ObjectProperty ;
+	rdfs:label "collaboratesWithPartner" ;
+	rdfs:comment "An object property that describes a Person that another Person collaborates with." ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Person ;
+	.
+
+CfHA:collaboratesWithGroup
+	a owl:ObjectProperty ;
+	rdfs:label "collaboratesWithGroup" ;
+	rdfs:comment "Inverse of worksWith - e.g. a Person collaborates with a Group, a Group works with a Person." ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Group ;
+	owl:inverseOf CfHA:hasContributor ;
+	.
+
+CfHA:communicatesWith
+	a owl:ObjectProperty ;
+	rdfs:label "communicatesWith" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Person ;
+	.
+
+CfHA:didnotreceive
+	a owl:ObjectProperty ;
+	rdfs:label "didnotreceive" ;
+	rdfs:domain CfHA:Project ;
+	rdfs:range CfHA:Funds ;
+	.
+
+CfHA:expectedToAttend
+	a owl:ObjectProperty ;
+	rdfs:label "expectedToAttend" ;
+	rdfs:domain
+		CfHA:Group ,
+		CfHA:Organization
+		;
+	rdfs:range
+		CfHA:Group ,
+		CfHA:Organization
+		;
+	.
+
+CfHA:extraInformation
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf owl:topDataProperty ;
+	rdfs:label "extraInformation" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:familyName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf owl:topDataProperty ;
+	rdfs:label "familyName" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:givenName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf owl:topDataProperty ;
+	rdfs:label "givenName" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:groupp
+	a swrl:Variable ;
+	.
+
+CfHA:hadOutput
+	a owl:ObjectProperty ;
+	rdfs:label "hadOutput" ;
+	rdfs:domain CfHA:Project ;
+	rdfs:range CfHA:Object ;
+	.
+
+CfHA:has
+	a owl:ObjectProperty ;
+	rdfs:label "has" ;
+	rdfs:domain CfHA:Project ;
+	rdfs:range CfHA:Topic ;
+	.
+
+CfHA:hasAffiliationNumber
+	a owl:DatatypeProperty ;
+	rdfs:label "hasAffiliation" ;
+	rdfs:domain
+		CfHA:Action ,
+		CfHA:Activity ,
+		CfHA:Domainn ,
+		CfHA:Event ,
+		CfHA:Funds ,
+		CfHA:Input ,
+		CfHA:Object ,
+		CfHA:Organization ,
+		CfHA:Other ,
+		CfHA:Output ,
+		CfHA:Person ,
+		CfHA:Position ,
+		CfHA:Program ,
+		CfHA:Role ,
+		CfHA:Skill ,
+		CfHA:Team ,
+		CfHA:Topic
+		;
+	rdfs:range xsd:int ;
+	.
+
+CfHA:hasAvailability
+	a owl:DatatypeProperty ;
+	rdfs:label "hasAvailability" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:dateTime ;
+	.
+
+CfHA:hasAward
+	a owl:DatatypeProperty ;
+	rdfs:label "hasAward" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:hasContributor
+	a owl:ObjectProperty ;
+	rdfs:label "hasContributor" ;
+	rdfs:comment "Inverse of collaboratesWithGroup - e.g. a Person collaborates with a Group, a Group works with a Person." ;
+	rdfs:domain CfHA:Group ;
+	rdfs:range CfHA:Person ;
+	.
+
+CfHA:hasFunded
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "hasFunded" ;
+	rdfs:domain CfHA:Group ;
+	rdfs:range
+		CfHA:Mission ,
+		CfHA:Project
+		;
+	.
+
+CfHA:hasLabel
+	a owl:ObjectProperty ;
+	rdfs:label "hasLabel" ;
+	rdfs:domain CfHA:Event ;
+	rdfs:range CfHA:Meeting ;
+	.
+
+CfHA:hasLocation
+	a owl:DatatypeProperty ;
+	rdfs:label "hasLocation" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:hasMembership
+	a owl:DatatypeProperty ;
+	rdfs:label "hasMembership" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:hasMet
+	a owl:ObjectProperty ;
+	rdfs:label "hasMet" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Person ;
+	.
+
+CfHA:hasPublication
+	a owl:DatatypeProperty ;
+	rdfs:label "hasPublication" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:hasRole
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "hasRole" ;
+	rdfs:comment "An object property that describes what Role a Person has." ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Role ;
+	.
+
+CfHA:hasSkill
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "hasSkill" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Skill ;
+	.
+
+CfHA:hasType
+	a owl:ObjectProperty ;
+	rdfs:label "hasType" ;
+	rdfs:domain CfHA:Output ;
+	rdfs:range [
+		a owl:Class ;
+		owl:unionOf (
+			CfHA:Event
+			CfHA:Publication
+		) ;
+	] ;
+	.
+
+CfHA:inDomain
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "inDomain" ;
+	rdfs:comment "An object property that describes the Domain of a Topic." ;
+	rdfs:domain CfHA:Topic ;
+	rdfs:range CfHA:Domainn ;
+	.
+
+CfHA:inGroup
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "inGroup" ;
+	rdfs:comment "An object property that defines which Group a Person is in. This is done because a Person can belong to a Group without necessarily belonging to a SubGroup." ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Organization ;
+	.
+
+CfHA:inSubGroup
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "inSubGroup" ;
+	rdfs:comment "An object property that specifies which SubGroup a Person is in." ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Group ;
+	.
+
+CfHA:inputForProcess
+	a owl:ObjectProperty ;
+	rdfs:label "inputForProcess" ;
+	rdfs:domain CfHA:Input ;
+	rdfs:range CfHA:Process ;
+	.
+
+CfHA:inputForProject
+	a owl:ObjectProperty ;
+	rdfs:label "inputForProject" ;
+	rdfs:domain CfHA:Input ;
+	rdfs:range CfHA:Project ;
+	.
+
+CfHA:involvedWith
+	a owl:ObjectProperty ;
+	rdfs:label "involvedWith" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Mission ;
+	.
+
+CfHA:isAffiliated
+	a owl:ObjectProperty ;
+	rdfs:label "isAffiliated" ;
+	rdfs:domain CfHA:Organization ;
+	rdfs:range CfHA:Team ;
+	.
+
+CfHA:isConnected
+	a owl:ObjectProperty ;
+	rdfs:label "isConnected" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Person ;
+	.
+
+CfHA:isMemberOfTeam
+	a owl:ObjectProperty ;
+	rdfs:label "isMemberOfTeam" ;
+	rdfs:comment "An object property that defines that a Person is a member of a Team" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Team ;
+	.
+
+CfHA:middleName
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf owl:topDataProperty ;
+	rdfs:label "middleName" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:outputofProcess
+	a owl:ObjectProperty ;
+	rdfs:label "outputofProcess" ;
+	rdfs:domain CfHA:Process ;
+	rdfs:range CfHA:Output ;
+	.
+
+CfHA:outputofProject
+	a owl:ObjectProperty ;
+	rdfs:label "outputofProject" ;
+	rdfs:domain CfHA:Project ;
+	rdfs:range CfHA:Output ;
+	.
+
+CfHA:partOfGroup
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "partOfGroup" ;
+	rdfs:comment "An object property that defines what Group a SubGroup is in." ;
+	rdfs:domain CfHA:Group ;
+	rdfs:range CfHA:Organization ;
+	.
+
+CfHA:participatesIn
+	a owl:ObjectProperty ;
+	rdfs:label "participatesIn" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Project ;
+	.
+
+CfHA:passesTo
+	a owl:ObjectProperty ;
+	rdfs:label "passesTo" ;
+	rdfs:domain CfHA:Action ;
+	rdfs:range CfHA:Role ;
+	.
+
+CfHA:performs
+	a owl:ObjectProperty ;
+	rdfs:label "performs" ;
+	rdfs:domain CfHA:Role ;
+	rdfs:range CfHA:Output ;
+	.
+
+CfHA:person
+	a swrl:Variable ;
+	.
+
+CfHA:presentedOn
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "presentedOn" ;
+	rdfs:comment "An object property that describes a Topic that a Person has presented on." ;
+	rdfs:domain [
+		a owl:Class ;
+		owl:unionOf (
+			CfHA:Group
+			CfHA:Person
+		) ;
+	] ;
+	rdfs:range CfHA:Topic ;
+	.
+
+CfHA:producedBy
+	a owl:ObjectProperty ;
+	rdfs:label "producedBy" ;
+	rdfs:domain CfHA:Output ;
+	rdfs:range [
+		a owl:Class ;
+		owl:unionOf (
+			CfHA:Group
+			CfHA:Person
+		) ;
+	] ;
+	.
+
+CfHA:producedDate
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf owl:topDataProperty ;
+	rdfs:domain CfHA:Output ;
+	rdfs:range xsd:dateTime ;
+	.
+
+CfHA:producesOutput
+	a owl:ObjectProperty ;
+	rdfs:label "producesOutput" ;
+	rdfs:domain [
+		a owl:Class ;
+		owl:unionOf (
+			CfHA:Group
+			CfHA:Person
+		) ;
+	] ;
+	rdfs:range CfHA:Output ;
+	.
+
+CfHA:provided
+	a owl:ObjectProperty ;
+	rdfs:label "provided" ;
+	rdfs:domain CfHA:Organization ;
+	rdfs:range CfHA:Funds ;
+	.
+
+CfHA:publishedOn
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "publishedOn" ;
+	rdfs:comment "An object property that describes a Topic that a Person has published on." ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Topic ;
+	.
+
+CfHA:referencesOrCites
+	a owl:ObjectProperty ;
+	rdfs:label "referencesOrCites" ;
+	rdfs:domain CfHA:Paper ;
+	rdfs:range CfHA:Person ;
+	.
+
+CfHA:relatedToPerson
+	a owl:ObjectProperty ;
+	rdfs:label "relatedToPerson" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Person ;
+	.
+
+CfHA:relatedToTopic
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "relatedToTopic" ;
+	rdfs:comment "An object property that describes a relation between a Topic and another Topic." ;
+	rdfs:domain CfHA:Topic ;
+	rdfs:range CfHA:Topic ;
+	.
+
+CfHA:representsOrganization
+	a owl:ObjectProperty ;
+	rdfs:label "representsOrganization" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Organization ;
+	.
+
+CfHA:resultsIn
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "resultsIn" ;
+	rdfs:domain CfHA:Project ;
+	rdfs:range CfHA:Output ;
+	.
+
+CfHA:sharesExpertise
+	a owl:ObjectProperty ;
+	rdfs:label "sharesExpertise" ;
+	rdfs:domain CfHA:Group ;
+	rdfs:range CfHA:Skill ;
+	.
+
+CfHA:startingDate
+	a owl:DatatypeProperty ;
+	rdfs:label "StartingDate" ;
+	rdfs:domain
+		CfHA:Action ,
+		CfHA:Activity ,
+		CfHA:Domainn ,
+		CfHA:Event ,
+		CfHA:Funds ,
+		CfHA:Input ,
+		CfHA:Object ,
+		CfHA:Organization ,
+		CfHA:Other ,
+		CfHA:Output ,
+		CfHA:Person ,
+		CfHA:Position ,
+		CfHA:Program ,
+		CfHA:Role ,
+		CfHA:Skill ,
+		CfHA:Team ,
+		CfHA:Topic
+		;
+	rdfs:range xsd:dateTime ;
+	.
+
+CfHA:subGroupAssociatedWith
+	a owl:ObjectProperty ;
+	rdfs:domain CfHA:Group ;
+	rdfs:range CfHA:Topic ;
+	.
+
+<#tColCharltonDavidLewis,II>
+	a
+		owl:NamedIndividual ,
+		CfHA:Person
+		;
+	rdfs:label "t Col Charlton David Lewis, II" ;
+	CfHA:associatedWithTopic
+		<#Data+integration+system> ,
+		<#Data+science> ,
+		CfHA:ML ,
+		<#Predictive+models> ,
+		<#Space+environment>
+		;
+	CfHA:collaboratesWithGroup <#Defense+Sciences+Office> ;
+	CfHA:familyName "Lewis, II" ;
+	CfHA:givenName "t Col Charlton David" ;
+	CfHA:inGroup <#Defense+Advanced+Research+Projects+Agency> ;
+	CfHA:worksOn <#Worked+on+a+funded+project> ;
+	.
+
+CfHA:title
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf owl:topDataProperty ;
+	rdfs:label "title" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range xsd:string ;
+	.
+
+CfHA:topic
+	a swrl:Variable ;
+	.
+
+CfHA:worksFor
+	a owl:ObjectProperty ;
+	rdfs:label "worksFor" ;
+	rdfs:domain CfHA:Person ;
+	rdfs:range CfHA:Organization ;
+	.
+
+CfHA:worksOn
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:label "worksOn" ;
+	rdfs:comment "An object property that defines which Project a Person works on." ;
+	rdfs:domain [
+		a owl:Class ;
+		owl:unionOf (
+			CfHA:Group
+			CfHA:Person
+		) ;
+	] ;
+	rdfs:range CfHA:Project ;
+	.
+
+[]
+	a swrl:Imp ;
+	rdfs:label "AssignTopicToGroup" ;
+	rdfs:comment "If a Person is associatedWith a Topic, and a Person collaboratesWith a Group, then a Topic is associatedWith a Group" ;
+	swrla:isRuleEnabled "true"^^xsd:boolean ;
+	swrl:body (
+		[
+			a swrl:IndividualPropertyAtom ;
+			swrl:argument1 CfHA:person ;
+			swrl:argument2 CfHA:groupp ;
+			swrl:propertyPredicate CfHA:collaboratesWithGroup ;
+		]
+		[
+			a swrl:ClassAtom ;
+			swrl:argument1 CfHA:person ;
+			swrl:classPredicate CfHA:Person ;
+		]
+		[
+			a swrl:IndividualPropertyAtom ;
+			swrl:argument1 CfHA:person ;
+			swrl:argument2 CfHA:topic ;
+			swrl:propertyPredicate CfHA:associatedWithTopic ;
+		]
+	) ;
+	swrl:head (
+		[
+			a swrl:IndividualPropertyAtom ;
+			swrl:argument1 CfHA:groupp ;
+			swrl:argument2 CfHA:topic ;
+			swrl:propertyPredicate CfHA:subGroupAssociatedWith ;
+		]
+	) ;
+	.
+
