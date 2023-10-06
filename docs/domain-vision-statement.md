@@ -13,9 +13,6 @@ The model should also represent activities and initiatives as connected to conce
 to support network search and timely recommendation based on topic-interest alignments
 with the goal of usefully connecting a person to other people, activities, and initiatives.
 
-- represent (interfaces)
-- support (interactions)
-
 ## About
 
 A <span class="term">Domain Vision Statement</span>[^1] is a short description (about one page)
