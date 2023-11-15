@@ -8,7 +8,7 @@ version = "0.0.1"
 authors = [
   { name="Donny Winston", email="donny@polyneme.xyz" },
 ]
-description = "HelioWeb: A resource for 21st century science"
+description = "HelioWeb: A Platform for the Future of Heliophysics"
 keywords = ["SKOS", "RDF"]
 readme = "README.md"
 requires-python = ">=3.11"
