@@ -20,8 +20,15 @@ classifiers = [
 dependencies = [
     "fastapi[all]",
     "rdflib",
+    "terminusdb_client",
     "toolz",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter"
+]
+
 
 [project.urls]
 "Homepage" = "https://github.com/polyneme/helioweb"
