@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="HelioWeb: A resource for 21st century science.">
+
+	<!-- Mobile Screen Resizing -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Icon -->
+	<!-- https://github.com/audreyr/favicon-cheat-sheet -->
+	<link rel="shortcut icon" href="{{ url_for('static', path='favicon.ico') }}">
+
+	<!-- Stylesheet & Init Class -->
+	<script src="{{ url_for('static', path='/nasawds/js/uswds-init.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ url_for('static', path='/nasawds/css/styles.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}" />
+</head>
+<body>
+
+	{% block header %}
+	<div class="usa-overlay"></div>
+	<header class="usa-header usa-header--basic">
+		<div class="usa-nav-container">
+			<div class="usa-navbar">
+				<div class="usa-logo">
+					<em class="usa-logo__text"><a href="/"><img alt="" height="24px" width="29px" src="{{ url_for('static', path='/img/logo.png') }}"> HelioWeb</a></em>
+				</div>
+				<button type="button" class="usa-menu-btn">Menu</button>
+			</div>
+			<nav aria-label="Primary navigation" class="usa-nav">
+				<button type="button" class="usa-nav__close">
+					<img src="{{ url_for('static', path='/nasawds/img/usa-icons/close.svg') }}" role="img" alt="Close">
+				</button>
+				<ul class="usa-nav__primary usa-accordion">
+					<li class="usa-nav__primary-item">
+						<a href="/" class="usa-nav-link">Home</a>
+					</li>
+					<li class="usa-nav__primary-item">
+						<a href="/Person" class="usa-nav-link">People</a>
+					</li>
+					<li class="usa-nav__primary-item">
+						<a href="/Profile" class="usa-nav-link">Profiles</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	{% endblock %}
+
+	<main>
+		<div class="grid-container">
+			{% block content %}{% endblock %}
+		</div>
+	</main>
+
+	<footer class="usa-footer usa-footer--slim padding-top-3">
+		<div class="grid-container usa-footer__return-to-top">
+			<a href="#">Return to top</a>
+		</div>
+		<div class="usa-footer__primary-section">
+			<div class="usa-footer__primary-container grid-row">
+				<div class="mobile-lg:grid-col-8">
+					<nav class="usa-footer__nav" aria-label="Footer navigation,">
+						<ul class="grid-row grid-gap">
+							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+								<a class="usa-footer__primary-link" href="/">Home</a>
+							</li>
+							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+								<a href="/Person" class="usa-footer__primary-link">People</a>
+							</li>
+							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+								<a href="/Profile" class="usa-footer__primary-link">Profiles</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="mobile-lg:grid-col-4">
+					<div class="usa-footer__address text-right">
+						<div class="usa-footer__contact-info">
+							&copy; Copyright {{ GLOBALS_today_year }} <a href="https://polyneme.xyz/">Polyneme LLC</a>.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="usa-footer__secondary-section">
+			<div class="grid-container">
+				<div class="usa-footer__logo grid-row grid-gap-2">
+					<div class="grid-col-auto">
+						<img alt="" height="92px" width="112px" src="{{ url_for('static', path='/img/logo-large.png') }}">
+					</div>
+					<div class="grid-col-auto">
+						<p class="usa-footer__logo-heading">HelioWeb</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- JavaScript -->
+	<!-- <script type="module" src="{{ url_for('static', path='/js/app.js') }}"></script> -->
+	<script src="{{ url_for('static', path='/nasawds/js/uswds.min.js') }}"></script>
+	<script src="{{ url_for('static', path='/js/htmx.min.js') }}"></script>
+</body>
+</html>

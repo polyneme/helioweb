@@ -1,0 +1,22 @@
+main {
+	min-height: 65vh;
+}
+
+/*dl,
+dd {
+	margin: 0;
+	padding: 0;
+}*/
+
+dd {
+	margin-bottom: 1.5rem;
+}
+
+dt {
+	font-weight: bold;
+}
+
+[role="status"] {
+	font-style: italic;
+	padding-top: 1rem;
+}

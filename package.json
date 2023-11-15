@@ -1,0 +1,7 @@
+{
+	"name": "helioweb",
+	"scripts": {
+		"install": "pip install -e .",
+		"watch": "uvicorn helioweb.ui.main:app --reload"
+	}
+}
