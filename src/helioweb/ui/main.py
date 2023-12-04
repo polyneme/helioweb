@@ -1,5 +1,6 @@
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 from fastapi import FastAPI, Depends
 from fastapi.staticfiles import StaticFiles
@@ -7,6 +8,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
 
+from helioweb.infra.config import HTTPS_URLS
 from helioweb.infra.core import get_mongodb
 from helioweb.ui.util import raise404_if_none
 
@@ -18,6 +20,15 @@ app.mount(
 )
 templates = Jinja2Templates(directory=Path(__file__).parent.joinpath("templates"))
 templates.env.globals.update({"GLOBALS_today_year": str(date.today().year)})
+
+
+def https_url_for(request: Request, name: str, **path_params: Any) -> str:
+    http_url = request.url_for(name, **path_params)
+    # Replace 'http' with 'https'
+    return http_url.replace(scheme="https") if HTTPS_URLS else http_url
+
+
+templates.env.globals["https_url_for"] = https_url_for
 
 
 @app.get("/", response_class=HTMLResponse)
