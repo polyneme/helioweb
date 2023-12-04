@@ -152,7 +152,7 @@ async def affil_home(request: Request, affil_id: str, mdb=Depends(get_mongodb)):
     )
     affil_works = sorted(
         list(mdb.alldocs.find({"type": "Work", "outgoing.o": affil["_id"]})),
-        key=lambda work: (work["ads_work"]["year"], work["display_name"]),
+        key=lambda work: (work["ads_work"]["year"], work["display_name"] or ""),
     )
     return templates.TemplateResponse(
         "affil.html",
