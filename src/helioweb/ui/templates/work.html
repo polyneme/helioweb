@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ work.display_name }} ({{ work._id }})</h1>
+
+<h2>Authors</h2>
+<ul>
+  {% for author in work_authors %}
+  <li><a href="/author:{{author._id}}">{{author.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Institutions</h2>
+<ul>
+  {% for affil in work_affils %}
+  <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

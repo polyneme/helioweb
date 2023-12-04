@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ author.display_name }} ({{ author._id }})</h1>
+
+<h2>Associated Concepts</h2>
+<ul>
+  {% for concept in author_concepts %}
+  <li><a href="/concept:{{concept._id}}">{{concept.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Authored Works</h2>
+<ul>
+  {% for work in author_works %}
+  <li><a href="/work:{{work._id}}">{{work.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
