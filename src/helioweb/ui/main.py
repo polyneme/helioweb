@@ -19,6 +19,4 @@ templates.env.globals.update({"GLOBALS_today_year": str(date.today().year)})
 
 @app.get("/", response_class=HTMLResponse)
 async def read_home(request: Request):
-    return templates.TemplateResponse(
-        "home.html", {"request": request}
-    )
+    return templates.TemplateResponse("home.html", {"request": request})
