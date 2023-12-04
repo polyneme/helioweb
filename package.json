@@ -2,6 +2,6 @@
 	"name": "helioweb",
 	"scripts": {
 		"install": "pip install -e .",
-		"watch": "uvicorn helioweb.ui.main:app --reload"
+		"server": "uvicorn helioweb.ui.main:app --reload --reload-dir src/"
 	}
 }

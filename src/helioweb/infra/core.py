@@ -1,9 +1,11 @@
-from terminusdb_client import WOQLClient
+from pymongo import MongoClient
+
+from helioweb.infra.config import MONGO_HOST, MONGO_USER, MONGO_PASSWORD
 
 
-def get_terminusdb_client():
-    team = "helioweb"
-    client = WOQLClient("https://cloud.terminusdb.com/helioweb/")
-    # make sure you have put the token in environment variable TERMINUSDB_ACCESS_TOKEN
-    client.connect(team=team, use_token=True, db="main")
-    return client
+def get_mongodb():
+    client = MongoClient(
+        host=MONGO_HOST, username=MONGO_USER, password=MONGO_PASSWORD, tls=True
+    )
+    mdb = client.helioweb
+    return mdb

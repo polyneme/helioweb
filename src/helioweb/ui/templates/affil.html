@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ affil.display_name }} ({{ affil._id }})</h1>
+
+<h2>Parent Institutions</h2>
+<ul>
+  {% for affil in affil_parents %}
+  <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Child Institutions</h2>
+<ul>
+  {% for affil in affil_children %}
+  <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Affiliated Works</h2>
+<ul>
+  {% for work in affil_works %}
+  <li><a href="/work:{{work._id}}">{{work.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

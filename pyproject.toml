@@ -19,8 +19,8 @@ classifiers = [
 ]
 dependencies = [
     "fastapi[all]",
+    "pymongo",
     "rdflib",
-    "terminusdb_client",
     "toolz",
 ]
 
