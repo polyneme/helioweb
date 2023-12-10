@@ -7,12 +7,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
+from toolz import assoc
 
 from helioweb.infra.config import HTTPS_URLS
 from helioweb.infra.core import get_mongodb
 from helioweb.ui.util import raise404_if_none
 
-app = FastAPI()
+app = FastAPI(docs_url="/apidocs")
 app.mount(
     "/static",
     StaticFiles(directory=Path(__file__).parent.joinpath("static")),
@@ -34,6 +35,11 @@ templates.env.globals["https_url_for"] = https_url_for
 @app.get("/", response_class=HTMLResponse)
 async def read_home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
+
+
+@app.get("/docs", response_class=HTMLResponse)
+async def read_docs(request: Request):
+    return templates.TemplateResponse("docs.html", {"request": request})
 
 
 @app.get("/author:{orcid:path}", response_class=HTMLResponse)
@@ -85,7 +91,10 @@ async def work_home(request: Request, work_id: str, mdb=Depends(get_mongodb)):
     work = raise404_if_none(mdb.alldocs.find_one({"_id": work_id}))
     work_authors = sorted(
         list(
-            mdb.alldocs.find(
+            assoc(
+                doc, "q", next(w["q"] for w in work["outgoing"] if w["o"] == doc["_id"])
+            )
+            for doc in mdb.alldocs.find(
                 {
                     "type": "Author",
                     "_id": {

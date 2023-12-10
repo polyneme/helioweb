@@ -1,15 +1,27 @@
 {% extends "base.html" %}
+{% block title %}{{ work.display_name }} ({{ work._id }}){% endblock %}
 {% block content %}
-<h1>{{ work.display_name }} ({{ work._id }})</h1>
+<h1>{{ work.display_name }}</h1>
 
-<h2>Authors</h2>
+<dl>
+  <dt>ADS bibcode</dt>
+  <dd><a href="{{ work._id }}">{{ work.ads_work.bibcode }}</a></dd>
+  <dt>year</dt>
+  <dd>{{ work.ads_work.year }}</dd>
+  <dt>Listed Authors</dt>
+  {% for name in work.ads_work.author %}<dd>{{name}}</dd>{% endfor %}
+  <dt>Listed Institutions</dt>
+  {% for name in work.ads_work.aff %}<dd>{{name}}</dd>{% endfor %}
+</dl>
+
+<h2>Linked Authors <a href="/docs#linked_authors">[?]</a></h2>
 <ul>
   {% for author in work_authors %}
-  <li><a href="/author:{{author._id}}">{{author.display_name}}</a></li>
+  <li><a href="/author:{{author._id}}">{{author.display_name}}</a> (<code>{{author.q}}</code> <a href="/docs#linked_authors">[?]</a>)</li>
   {% endfor %}
 </ul>
 
-<h2>Institutions</h2>
+<h2>Linked Institutions</h2>
 <ul>
   {% for affil in work_affils %}
   <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>
