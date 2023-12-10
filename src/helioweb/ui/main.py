@@ -63,11 +63,17 @@ async def author_home(request: Request, orcid: str, mdb=Depends(get_mongodb)):
         key=lambda work: (work["ads_work"]["year"], work["display_name"]),
         reverse=True,
     )
+    author_oax_link = (
+        author.get("oax_author", {})
+        .get("id", "")
+        .replace("https://openalex.org", "https://api.openalex.org")
+    )
     return templates.TemplateResponse(
         "author.html",
         {
             "request": request,
             "author": author,
+            "author_oax_link": author_oax_link,
             "author_concepts": author_concepts,
             "author_works": author_works,
         },

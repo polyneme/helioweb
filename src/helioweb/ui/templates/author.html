@@ -1,6 +1,14 @@
 {% extends "base.html" %}
+{% block title %}{{ author.display_name }} ({{ author._id }}){% endblock %}
 {% block content %}
-<h1>{{ author.display_name }} ({{ author._id }})</h1>
+<h1>{{ author.display_name }}</h1>
+
+<dl>
+  <dt>ORCiD</dt>
+  <dd><a href="{{author._id}}">{{author._id}}</a></dd>
+  <dt>OpenAlex</dt>
+  <dd>{{author.oax_author.id}} (<a href="{{author_oax_link}}">API record</a>)</dd>
+</dl>
 
 <h2>Associated Concepts</h2>
 <ul>
