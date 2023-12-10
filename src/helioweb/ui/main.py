@@ -23,6 +23,10 @@ templates = Jinja2Templates(directory=Path(__file__).parent.joinpath("templates"
 templates.env.globals.update({"GLOBALS_today_year": str(date.today().year)})
 
 
+def oax_api_link_for(id_: str):
+    return id_.replace("https://openalex.org", "https://api.openalex.org")
+
+
 def https_url_for(request: Request, name: str, **path_params: Any) -> str:
     http_url = request.url_for(name, **path_params)
     # Replace 'http' with 'https'
@@ -69,17 +73,13 @@ async def author_home(request: Request, orcid: str, mdb=Depends(get_mongodb)):
         key=lambda work: (work["ads_work"]["year"], work["display_name"]),
         reverse=True,
     )
-    author_oax_link = (
-        author.get("oax_author", {})
-        .get("id", "")
-        .replace("https://openalex.org", "https://api.openalex.org")
-    )
+    author_oax_api_link = oax_api_link_for(author.get("oax_author", {}).get("id", ""))
     return templates.TemplateResponse(
         "author.html",
         {
             "request": request,
             "author": author,
-            "author_oax_link": author_oax_link,
+            "author_oax_api_link": author_oax_api_link,
             "author_concepts": author_concepts,
             "author_works": author_works,
         },
@@ -230,11 +230,13 @@ async def affil_home(request: Request, concept_id: str, mdb=Depends(get_mongodb)
         ),
         key=lambda author: author["display_name"],
     )
+    concept_oax_api_link = oax_api_link_for(concept["_id"])
     return templates.TemplateResponse(
         "concept.html",
         {
             "request": request,
             "concept": concept,
+            "concept_oax_api_link": concept_oax_api_link,
             "concept_parents": concept_parents,
             "concept_children": concept_children,
             "concept_authors": concept_authors,
