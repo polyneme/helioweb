@@ -18,6 +18,10 @@ Prepare a demo suitable for gathering feedback
 at the American Geophysical Union (AGU) [Fall Meeting](https://www.agu.org/fall-meeting)
 the week of 11-15 December 2023.
 
+## Data Model
+
+[Domain Vision Statement](docs/domain-vision-statement.md)
+
 ## Data Management Plan
 
 All tools, code, and databases funded through the Helioweb proposal will be made publicly available per NASA guidelines and open source directives though collaboration with the Heliophysics Digital Research Library (HDRL) at Goddard Space Flight Center.
