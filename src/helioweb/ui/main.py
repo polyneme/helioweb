@@ -184,7 +184,7 @@ async def affil_home(request: Request, affil_id: str, mdb=Depends(get_mongodb)):
 
 
 @app.get("/concept:{concept_id:path}", response_class=HTMLResponse)
-async def affil_home(request: Request, concept_id: str, mdb=Depends(get_mongodb)):
+async def concept_home(request: Request, concept_id: str, mdb=Depends(get_mongodb)):
     concept = raise404_if_none(mdb.alldocs.find_one({"_id": concept_id}))
     if concept.get("outgoing"):
         concept_parents = sorted(
