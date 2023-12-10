@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block title %}{{ concept.display_name }} ({{ concept._id }}){% endblock %}
 {% block content %}
-<h1>{{ concept.display_name }} ({{ concept._id }})</h1>
+<h1>{{ concept.display_name }}</h1>
 
 <dl>
   <dt>Wikidata</dt>
   <dd><a href="{{concept.concept.wikidata}}">{{concept.concept.wikidata}}</a></dd>
   <dt>OpenAlex ID</dt>
-  <dd>{{concept._id}}</dd>
+  <dd>{{concept._id}} (<a href="{{concept_oax_api_link}}">API record</a>)</dd>
   <dt>OpenAlex Description</dt>
-  <dd>{{concept.description}} (<a href="{{concept_oax_api_link}}">API record</a>)</dd>
+  <dd>{{concept.description}}</dd>
   <dt>OpenAlex Level <a href="/docs#openalex_levels">[?]</a></dt>
   <dd>{{concept.concept.level}}</dd>
 </dl>

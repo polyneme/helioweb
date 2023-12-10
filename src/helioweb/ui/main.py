@@ -169,11 +169,13 @@ async def affil_home(request: Request, affil_id: str, mdb=Depends(get_mongodb)):
         list(mdb.alldocs.find({"type": "Work", "outgoing.o": affil["_id"]})),
         key=lambda work: (work["ads_work"]["year"], work["display_name"] or ""),
     )
+    affil_ads_id = affil["_id"].split("/")[-1]
     return templates.TemplateResponse(
         "affil.html",
         {
             "request": request,
             "affil": affil,
+            "affil_ads_id": affil_ads_id,
             "affil_parents": affil_parents,
             "affil_children": affil_children,
             "affil_works": affil_works,
