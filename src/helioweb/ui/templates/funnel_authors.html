@@ -123,7 +123,7 @@
 <h2 class="has-subheader" id="results">Results (up to 50) (of {{ '{:,}'.format(n_authors) }} total)</h2>
 <ol>
   {% for author in authors %}
-  <li><a href="/{{author._id}}">{{author.display_name}}</a></li>
+  <li><a href="/author:{{author._id}}">{{author.display_name}}</a></li>
   {% endfor %}
 </ol>
 
