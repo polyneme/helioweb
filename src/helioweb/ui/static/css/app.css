@@ -20,3 +20,10 @@ dt {
 	font-style: italic;
 	padding-top: 1rem;
 }
+
+h2.has-subheader {
+	margin-bottom: 0;
+}
+h2.has-subheader + p {
+	margin-top: 0;
+}

@@ -20,7 +20,8 @@
   {% endfor %}
 </ul>
 
-<h2 id="authored-works">Authored Works</h2>
+<h2 class="has-subheader" id="authored-works">Authored Works</h2>
+<p>sorted by decreasing year, and then by display-name</p>
 <ul>
   {% for work in author_works %}
   <li><a href="/work:{{work._id}}">{{work.display_name}}</a></li>
