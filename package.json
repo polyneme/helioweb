@@ -3,5 +3,8 @@
 	"scripts": {
 		"install": "pip install -e .",
 		"server": "uvicorn helioweb.ui.main:app --reload --reload-dir src/"
+	},
+	"dependencies": {
+		"mermaid": "^10.6.1"
 	}
 }

@@ -3,7 +3,21 @@
 {% block content %}
 <h1>{{ work.display_name }}</h1>
 
-<a href="#linked-authors">Linked Authors</a> | <a href="#linked-institutions">Linked Institutions</a>
+<!--<a href="#linked-authors">Linked Authors</a> | <a href="#linked-institutions">Linked Institutions</a>-->
+
+<figure>
+<pre class="mermaid">
+    flowchart
+    W[{{ work.ads_work.bibcode }}]
+    LA["Linked Authors ({{ work_authors | length }})"]
+    LI["Linked Institutions ({{ work_affils | length }})"]
+    W== author ==>LA
+    W== affil ==>LI
+    click LA "#linked-authors"
+    click LI "#linked-institutions"
+</pre>
+<figcaption>Graph neighborhood for '{{ work.display_name }}'. Click aggregate nodes to navigate.</figcaption>
+</figure>
 
 <dl>
   <dt>ADS bibcode</dt>

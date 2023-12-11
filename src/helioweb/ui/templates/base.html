@@ -98,5 +98,9 @@
 	<!-- <script type="module" src="{{ https_url_for(request, 'static', path='/js/app.js') }}"></script> -->
 	<script src="{{ https_url_for(request, 'static', path='/nasawds/js/uswds.min.js') }}"></script>
 	<script src="{{ https_url_for(request, 'static', path='/js/htmx.min.js') }}"></script>
+	<script type="module">
+		import mermaid from '{{ https_url_for(request, "static", path="/js/mermaid/dist/mermaid.esm.min.mjs") }}';
+		mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+	  </script>
 </body>
 </html>

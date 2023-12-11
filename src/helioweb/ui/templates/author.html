@@ -3,8 +3,29 @@
 {% block content %}
 <h1>{{ author.display_name }}</h1>
 
-<a href="#associated-concepts">Associated Concepts</a> | <a href="#authored-works">Authored Works</a> |
- <a href="#co-authors">Linked Co-Authors</a> |  <a href="#collaborating-institutions">Linked Collaborating Institutions</a>
+<!--<a href="#associated-concepts">Associated Concepts</a> | <a href="#authored-works">Authored Works</a> |-->
+<!-- <a href="#co-authors">Linked Co-Authors</a> |  <a href="#collaborating-institutions">Linked Collaborating Institutions</a>-->
+
+<figure>
+<pre class="mermaid">
+    flowchart
+    A[{{ author.display_name }}]
+    AC["Associated Concepts ({{ author_concepts | length }})"]
+    AW["Authored Works ({{ author_works | length }})"]
+    CA["Linked Co-Authors ({{ author_coauthors | length }})"]
+    CI["Linked Collaborating Institutions ({{ author_collaborating_institutions | length }})"]
+    A== dcterms:relation ==>AC
+    AW== author ==>A
+    AW== author ==>CA
+    AW== affil ==>CI
+    click AC "#associated-concepts"
+    click AW "#authored-works"
+    click CA "#co-authors"
+    click CI "#collaborating-institutions"
+
+</pre>
+<figcaption>Graph neighborhood for '{{ author.display_name }}'. Click aggregate nodes to navigate.</figcaption>
+</figure>
 
 <dl>
   <dt>ORCiD</dt>

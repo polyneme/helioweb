@@ -3,8 +3,29 @@
 {% block content %}
 <h1>{{ affil.display_name }}</h1>
 
-<a href="#parent-institutions">Parent Institutions</a> | <a href="#child-institutions">Child Institutions</a> |
- <a href="#affiliated-works">Affiliated Works</a> |  <a href="#collaborating-authors">Linked Collaborating Authors</a>
+<!--<a href="#parent-institutions">Parent Institutions</a> | <a href="#child-institutions">Child Institutions</a> |-->
+<!-- <a href="#affiliated-works">Affiliated Works</a> |  <a href="#collaborating-authors">Linked Collaborating Authors</a>-->
+
+<figure>
+<pre class="mermaid">
+    flowchart
+    I[{{ affil.display_name }}]
+    PI["Parent Institutions ({{ affil_parents | length }})"]
+    CI["Child Institutions ({{ affil_children | length }})"]
+    AW["Affiliated Works ({{ affil_works | length }})"]
+    CA["Linked Collaborating Authors ({{ affil_collaborating_authors | length }})"]
+    I== skos:broader ==>PI
+    CI== skos:broader ==>I
+    AW== affil ==>I
+    AW== author ==>CA
+    click PI "#parent-institutions"
+    click CI "#child-institutions"
+    click AW "#affiliated-works"
+    click CA "#collaborating-authors"
+
+</pre>
+<figcaption>Graph neighborhood for '{{ affil.display_name }}'. Click aggregate nodes to navigate.</figcaption>
+</figure>
 
 <dl>
   <dt>ADS ID <a href="/docs#institution_metadata">[?]</a></dt>

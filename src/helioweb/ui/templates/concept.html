@@ -3,8 +3,26 @@
 {% block content %}
 <h1>{{ concept.display_name }}</h1>
 
-<a href="#broader-concepts">Broader Concepts</a> | <a href="#narrower-concepts">Narrower Concepts</a> |
-<a href="#associated-authors">Associated Authors</a>
+<!--<a href="#broader-concepts">Broader Concepts</a> | <a href="#narrower-concepts">Narrower Concepts</a> |-->
+<!--<a href="#associated-authors">Associated Authors</a>-->
+
+<figure>
+<pre class="mermaid">
+    flowchart
+    AA["Associated Authors ({{ concept_authors | length }})"]
+    C[{{ concept.display_name }}]
+    BC["Broader Concepts ({{ concept_parents | length }})"]
+    NC["Narrower Concepts ({{ concept_children | length }})"]
+    C== skos:broader ==>BC
+    NC== skos:broader ==>C
+    AA== dcterms:relation ==>C
+    click BC "#broader-concepts"
+    click NC "#narrower-concepts"
+    click AA "#associated-authors"
+</pre>
+<figcaption>Graph neighborhood for '{{ concept.display_name }}'. Click aggregate nodes to navigate.</figcaption>
+</figure>
+
 
 <dl>
   <dt>Wikidata</dt>
