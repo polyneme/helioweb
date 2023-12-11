@@ -21,6 +21,14 @@ dt {
 	padding-top: 1rem;
 }
 
+h1.has-subheader {
+	margin-bottom: 0;
+}
+h1.has-subheader + p {
+	margin-top: 0;
+	font-size: x-large;
+}
+
 h2.has-subheader {
 	margin-bottom: 0;
 }
@@ -33,4 +41,17 @@ h2.has-subheader + p {
 }
 .mermaid + figcaption {
 	font-size: small;
+}
+
+h1 > ul > li {
+	font-size: medium;
+}
+
+fieldset.usa-fieldset.visually-grouped-fieldset {
+	padding: 0.5em 0.5em;
+	border: 1px solid #ccc;
+}
+
+fieldset.usa-fieldset.visually-grouped-fieldset:not(:first-of-type) {
+	margin-top: 2em;
 }

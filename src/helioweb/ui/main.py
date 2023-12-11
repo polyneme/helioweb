@@ -1,13 +1,14 @@
 from datetime import date
+from gettext import gettext, ngettext, pgettext, npgettext
 from pathlib import Path
-from typing import Any
+from typing import Any, Annotated
 
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
-from toolz import assoc, merge
+from toolz import assoc, merge, concatv
 
 from helioweb.infra.config import HTTPS_URLS
 from helioweb.infra.core import get_mongodb
@@ -21,6 +22,8 @@ app.mount(
 )
 templates = Jinja2Templates(directory=Path(__file__).parent.joinpath("templates"))
 templates.env.globals.update({"GLOBALS_today_year": str(date.today().year)})
+templates.env.add_extension("jinja2.ext.i18n")
+templates.env.install_gettext_callables(gettext, ngettext)
 
 
 def oax_api_link_for(id_: str):
@@ -56,7 +59,6 @@ async def search(
     filter_ = {"$text": {"$search": q}}
     if t is not None:
         filter_ = merge(filter_, {"type": t})
-    print(filter_)
     results = list(
         mdb.alldocs.find(
             filter=filter_,
@@ -80,6 +82,112 @@ async def search(
 
     return templates.TemplateResponse(
         "search.html", {"request": request, "q": q, "results": results, "t": t}
+    )
+
+
+@app.get("/funnel_authors", response_class=HTMLResponse)
+async def funnel_authors(
+    request: Request,
+    concept: Annotated[list[str] | None, Query()] = None,
+    institution: Annotated[list[str] | None, Query()] = None,
+    coauthor: Annotated[list[str] | None, Query()] = None,
+    mdb=Depends(get_mongodb),
+):
+    qarg_values = {
+        "concept": concept or ["", "", ""],
+        "institution": institution or ["", "", ""],
+        "coauthor": coauthor or ["", "", ""],
+    }
+    for qarg, _ in qarg_values.items():
+        for len_ in (1, 2):
+            if len(qarg_values[qarg]) == len_:
+                qarg_values[qarg].append("")
+
+    if (
+        any(qarg_values["concept"])
+        or any(qarg_values["institution"])
+        or any(qarg_values["coauthor"])
+    ):
+        authors_with_concepts_filter = {"type": "Author"}
+        if any(qarg_values["concept"]):
+            authors_with_concepts_filter["outgoing"] = {
+                "$all": [
+                    {"$elemMatch": {"p": "dcterms:relation", "o": c}}
+                    for c in filter(None, qarg_values["concept"])
+                ]
+            }
+
+        author_ids_from_concepts = [
+            d["_id"] for d in mdb.alldocs.find(authors_with_concepts_filter)
+        ]
+
+        works_with_authors_filter = {"type": "Work", "outgoing.p": "author"}
+        if any(qarg_values["institution"]) or any(qarg_values["coauthor"]):
+            works_with_authors_filter["outgoing"] = {"$all": []}
+        if any(qarg_values["institution"]):
+            works_with_authors_filter["outgoing"]["$all"].extend(
+                [
+                    {"$elemMatch": {"p": "affil", "o": i}}
+                    for i in filter(None, qarg_values["institution"])
+                ]
+            )
+        if any(qarg_values["coauthor"]):
+            works_with_authors_filter["outgoing"]["$all"].extend(
+                [
+                    {"$elemMatch": {"p": "author", "o": a}}
+                    for a in filter(None, qarg_values["coauthor"])
+                ]
+            )
+        author_ids_from_institutions_and_coauthors = [
+            d["_id"]
+            for d in mdb.alldocs.aggregate(
+                [
+                    {"$match": works_with_authors_filter},
+                    {"$project": {"_id": 0, "outgoing": 1}},
+                    {"$unwind": {"path": "$outgoing"}},
+                    {"$match": {"outgoing.p": "author"}},
+                    {"$project": {"_id": "$outgoing.o"}},
+                    {"$group": {"_id": "$_id"}},
+                ],
+                allowDiskUse=True,
+            )
+        ]
+
+        author_ids = list(
+            set(author_ids_from_concepts)
+            & set(author_ids_from_institutions_and_coauthors)
+        )
+        n_authors = len(author_ids)
+        authors = mdb.alldocs.find(
+            filter={"_id": {"$in": author_ids}},
+            projection=["display_name"],
+            sort=[("display_name", 1)],
+            limit=50,
+        )
+    else:
+        n_authors = mdb.alldocs.count_documents({"type": "Author"})
+        authors = []
+    all_author_concepts = list(mdb.all_author_concepts.find())
+    all_work_institutions = list(mdb.all_work_institutions.find())
+    all_authors = list(mdb.alldocs.find({"type": "Author"}, ["display_name"]))
+    qarg_counts = {
+        qarg: [i for i in qarg_values[qarg] if i]
+        for qarg in ["concept", "institution", "coauthor"]
+    }
+    return templates.TemplateResponse(
+        "funnel_authors.html",
+        {
+            "request": request,
+            "authors": authors,
+            "n_authors": n_authors,
+            "concepts": tuple(qarg_values["concept"]),
+            "institutions": tuple(qarg_values["institution"]),
+            "coauthors": tuple(qarg_values["coauthor"]),
+            "qarg_counts": qarg_counts,
+            "all_author_concepts": all_author_concepts,
+            "all_work_institutions": all_work_institutions,
+            "all_authors": all_authors,
+        },
     )
 
 

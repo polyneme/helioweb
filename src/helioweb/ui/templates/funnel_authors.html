@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Funnel authors by: concepts {{concepts}}, institutions {{institutions}}, co-authors {{coauthors}}{% endblock %}
+{% block content %}
+<h1 class="has-subheader">Funnel authors by:
+</h1>
+<p>
+  {% trans nc=qarg_counts.get("concept")|length %}
+  {{nc}} concept,
+  {% pluralize %}
+  {{nc}} concepts,
+  {% endtrans %}
+
+  {% trans ni=qarg_counts.institution|length %}
+  {{ni}} institution,
+  {% pluralize %}
+  {{ni}} institutions,
+  {% endtrans %}
+
+  {% trans na=qarg_counts.coauthor|length %}
+  {{na}} co-author
+  {% pluralize %}
+  {{na}} co-authors
+  {% endtrans %}
+
+</p>
+
+<form class="usa-form usa-form--large" method="get">
+  <fieldset class="usa-fieldset visually-grouped-fieldset">
+    <legend>Concepts</legend>
+    <label class="usa-label" for="concept_0">First Concept</label>
+    <div class="usa-combo-box" data-default-value="{{ concepts.0 }}">
+      <select class="usa-select" name="concept" id="concept_0">
+        <option value>Select a concept</option>
+        {% for concept in all_author_concepts %}
+        <option value="{{concept._id}}" >{{concept.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <label class="usa-label" for="concept_1">Second Concept</label>
+    <div class="usa-combo-box" data-default-value="{{ concepts.1 }}">
+      <select class="usa-select" name="concept" id="concept_1">
+        <option value>Select a concept</option>
+        {% for concept in all_author_concepts %}
+        <option value="{{concept._id}}">{{concept.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <label class="usa-label" for="concept_2">Third Concept</label>
+    <div class="usa-combo-box" data-default-value="{{ concepts.2 }}">
+      <select class="usa-select" name="concept" id="concept_2">
+        <option value>Select a concept</option>
+        {% for concept in all_author_concepts %}
+        <option value="{{concept._id}}">{{concept.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+  <fieldset class="usa-fieldset visually-grouped-fieldset">
+    <legend>Collaborating Institutions</legend>
+    <label class="usa-label" for="institution_0">First Institution</label>
+    <div class="usa-combo-box" data-default-value="{{ institutions.0 }}">
+      <select class="usa-select" name="institution" id="institution_0">
+        <option value>Select an institution</option>
+        {% for affil in all_work_institutions %}
+        <option value="{{affil._id}}" >{{affil.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <label class="usa-label" for="institution_1">Second Institution</label>
+    <div class="usa-combo-box" data-default-value="{{ institutions.1 }}">
+      <select class="usa-select" name="institution" id="institution_1">
+        <option value>Select an institution</option>
+        {% for affil in all_work_institutions %}
+        <option value="{{affil._id}}">{{affil.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <label class="usa-label" for="institution_2">Third Institution</label>
+    <div class="usa-combo-box" data-default-value="{{ institutions.2 }}">
+      <select class="usa-select" name="institution" id="institution_2">
+        <option value>Select an institution</option>
+        {% for affil in all_work_institutions %}
+        <option value="{{affil._id}}">{{affil.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+  <fieldset class="usa-fieldset visually-grouped-fieldset">
+    <legend>Co-Authors</legend>
+    <label class="usa-label" for="coauthor_0">First Co-Author</label>
+    <div class="usa-combo-box" data-default-value="{{ coauthors.0 }}">
+      <select class="usa-select" name="coauthor" id="coauthor_0">
+        <option value>Select an author</option>
+        {% for author in all_authors %}
+        <option value="{{author._id}}" >{{author.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <label class="usa-label" for="coauthor_1">Second Co-Author</label>
+    <div class="usa-combo-box" data-default-value="{{ coauthors.1 }}">
+      <select class="usa-select" name="coauthor" id="coauthor_1">
+        <option value>Select an author</option>
+        {% for author in all_authors %}
+        <option value="{{author._id}}">{{author.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <label class="usa-label" for="coauthor_2">Third Co-Author</label>
+    <div class="usa-combo-box" data-default-value="{{ coauthors.2 }}">
+      <select class="usa-select" name="coauthor" id="coauthor_2">
+        <option value>Select an author</option>
+        {% for author in all_authors %}
+        <option value="{{author._id}}">{{author.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+  <input class="usa-button" type="submit" value="Funnel Authors" />
+</form>
+
+
+
+<h2 class="has-subheader" id="results">Results (up to 50) (of {{ '{:,}'.format(n_authors) }} total)</h2>
+<ol>
+  {% for author in authors %}
+  <li><a href="/{{author._id}}">{{author.display_name}}</a></li>
+  {% endfor %}
+</ol>
+
+
+{% endblock %}
