@@ -14,4 +14,24 @@
 
 <p><a href="https://github.com/polyneme/helioweb/blob/main/README.md">Learn more about the HelioWeb vision.</a></p>
 
+<section aria-label="Big search component">
+  <form class="usa-search usa-search--big" role="search" action="/search" method="get">
+    <label class="usa-sr-only" for="search-field-en-big">Search</label>
+    <input
+      class="usa-input"
+      id="search-field-en-big"
+      type="search"
+      name="q"
+    />
+    <button class="usa-button" type="submit">
+      <span class="usa-search__submit-text">Search </span
+      ><img
+         src="{{ https_url_for(request, 'static', path='/nasawds/img/usa-icons-bg/search--white.svg') }}"
+        class="usa-search__submit-icon"
+        alt="Search"
+      />
+    </button>
+  </form>
+</section>
+
 {% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Search for: {{q}}{% endblock %}
+{% block content %}
+<h1>Search for: {{ q }}</h1>
+
+<section aria-label="Big search component">
+  <form class="usa-search usa-search--big" role="search" action="/search" method="get">
+    <label class="usa-sr-only" for="search-field-en-big">Search</label>
+    <input
+      class="usa-input"
+      id="search-field-en-big"
+      type="search"
+      name="q"
+      value="{{q}}"
+    />
+    {% if t != None %}<input type="hidden" name="t" value="{{t}}" />{% endif %}
+    <button class="usa-button" type="submit">
+      <span class="usa-search__submit-text">Search </span
+      ><img
+         src="{{ https_url_for(request, 'static', path='/nasawds/img/usa-icons-bg/search--white.svg') }}"
+        class="usa-search__submit-icon"
+        alt="Search"
+      />
+    </button>
+  </form>
+</section>
+
+
+<h2 class="has-subheader" id="results">Results</h2>
+<p>
+  {% if t == None %}
+  restrict to:
+  <a href="/search?q={{q}}&t=Author">authors</a> |
+  <a href="/search?q={{q}}&t=Concept">concepts</a> |
+  <a href="/search?q={{q}}&t=Institution">institutions</a> |
+  <a href="/search?q={{q}}&t=Work">works</a>
+  {% else %}
+  restricted to type: {{ t }}. <a href="/search?q={{q}}">allow any type.</a>
+  {% endif %}
+</p>
+<ol>
+  {% for result in results %}
+  <li><a href="/{{result._href}}">{{result.type}}: {{result.display_name}}</a> (score: {{ '{:.2f}'.format(result.score)}})</li>
+  {% endfor %}
+</ol>
+
+
+{% endblock %}

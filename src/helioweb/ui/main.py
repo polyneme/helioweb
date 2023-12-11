@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
-from toolz import assoc
+from toolz import assoc, merge
 
 from helioweb.infra.config import HTTPS_URLS
 from helioweb.infra.core import get_mongodb
@@ -27,7 +27,7 @@ def oax_api_link_for(id_: str):
     return id_.replace("https://openalex.org", "https://api.openalex.org")
 
 
-def https_url_for(request: Request, name: str, **path_params: Any) -> str:
+def https_url_for(request: Request, name: str, **path_params: Any):
     http_url = request.url_for(name, **path_params)
     # Replace 'http' with 'https'
     return http_url.replace(scheme="https") if HTTPS_URLS else http_url
@@ -44,6 +44,43 @@ async def read_home(request: Request):
 @app.get("/docs", response_class=HTMLResponse)
 async def read_docs(request: Request):
     return templates.TemplateResponse("docs.html", {"request": request})
+
+
+@app.get("/search", response_class=HTMLResponse)
+async def search(
+    request: Request,
+    q: str = "",
+    t: str | None = None,
+    mdb=Depends(get_mongodb),
+):
+    filter_ = {"$text": {"$search": q}}
+    if t is not None:
+        filter_ = merge(filter_, {"type": t})
+    print(filter_)
+    results = list(
+        mdb.alldocs.find(
+            filter=filter_,
+            projection={"score": {"$meta": "textScore"}},
+            sort={"score": {"$meta": "textScore"}},
+            limit=50,
+        )
+    )
+    for r in results:
+        match r["type"]:
+            case "Author":
+                r["_href"] = "author:" + r["_id"]
+            case "Concept":
+                r["_href"] = "concept:" + r["_id"]
+            case "Institution":
+                r["_href"] = "affil:" + r["_id"]
+            case "Work":
+                r["_href"] = "work:" + r["_id"]
+            case _:
+                r["_href"] = "_:" + r["_id"]
+
+    return templates.TemplateResponse(
+        "search.html", {"request": request, "q": q, "results": results, "t": t}
+    )
 
 
 @app.get("/author:{orcid:path}", response_class=HTMLResponse)
