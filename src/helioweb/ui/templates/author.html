@@ -3,6 +3,9 @@
 {% block content %}
 <h1>{{ author.display_name }}</h1>
 
+<a href="#associated-concepts">Associated Concepts</a> | <a href="#authored-works">Authored Works</a> |
+ <a href="#co-authors">Linked Co-Authors</a> |  <a href="#collaborating-institutions">Linked Collaborating Institutions</a>
+
 <dl>
   <dt>ORCiD</dt>
   <dd><a href="{{author._id}}">{{author._id}}</a></dd>
@@ -17,11 +20,26 @@
   {% endfor %}
 </ul>
 
-<h2>Authored Works</h2>
+<h2 id="authored-works">Authored Works</h2>
 <ul>
   {% for work in author_works %}
   <li><a href="/work:{{work._id}}">{{work.display_name}}</a></li>
   {% endfor %}
 </ul>
+
+<h2 id="co-authors">Linked Co-Authors</h2>
+<ul>
+  {% for author in author_coauthors %}
+  <li><a href="/author:{{author._id}}">{{author.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+<h2 id="collaborating-institutions">Linked Collaborating Institutions</h2>
+<ul>
+  {% for affil in author_collaborating_institutions %}
+  <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
 
 {% endblock %}

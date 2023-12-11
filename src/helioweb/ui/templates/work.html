@@ -3,6 +3,8 @@
 {% block content %}
 <h1>{{ work.display_name }}</h1>
 
+<a href="#linked-authors">Linked Authors</a> | <a href="#linked-institutions">Linked Institutions</a>
+
 <dl>
   <dt>ADS bibcode</dt>
   <dd><a href="{{ work._id }}">{{ work.ads_work.bibcode }}</a></dd>
@@ -14,14 +16,14 @@
   {% for name in work.ads_work.aff %}<dd>{{name}}</dd>{% endfor %}
 </dl>
 
-<h2>Linked Authors <a href="/docs#linked_authors">[?]</a></h2>
+<h2 id="linked-authors">Linked Authors <a href="/docs#linked_authors">[?]</a></h2>
 <ul>
   {% for author in work_authors %}
   <li><a href="/author:{{author._id}}">{{author.display_name}}</a> (<code>{{author.q}}</code> <a href="/docs#linked_authors">[?]</a>)</li>
   {% endfor %}
 </ul>
 
-<h2>Linked Institutions</h2>
+<h2 id="linked-institutions">Linked Institutions</h2>
 <ul>
   {% for affil in work_affils %}
   <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>

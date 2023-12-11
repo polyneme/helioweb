@@ -3,6 +3,9 @@
 {% block content %}
 <h1>{{ affil.display_name }}</h1>
 
+<a href="#parent-institutions">Parent Institutions</a> | <a href="#child-institutions">Child Institutions</a> |
+ <a href="#affiliated-works">Affiliated Works</a> |  <a href="#collaborating-authors">Linked Collaborating Authors</a>
+
 <dl>
   <dt>ADS ID <a href="/docs#institution_metadata">[?]</a></dt>
   <dd>{{ affil_ads_id }}</dd>
@@ -10,24 +13,31 @@
   <dd>{{affil.ads_affil.abbrev}}</dd>
 </dl>
 
-<h2>Parent Institutions <a href="/docs#institution_metadata">[?]</a></h2>
+<h2 id="parent-institutions">Parent Institutions <a href="/docs#institution_metadata">[?]</a></h2>
 <ul>
   {% for affil in affil_parents %}
   <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>
   {% endfor %}
 </ul>
 
-<h2>Child Institutions <a href="/docs#institution_metadata">[?]</a></h2>
+<h2 id="child-institutions">Child Institutions <a href="/docs#institution_metadata">[?]</a></h2>
 <ul>
   {% for affil in affil_children %}
   <li><a href="/affil:{{affil._id}}">{{affil.display_name}}</a></li>
   {% endfor %}
 </ul>
 
-<h2>Affiliated Works</h2>
+<h2 id="affiliated-works">Affiliated Works</h2>
 <ul>
   {% for work in affil_works %}
   <li><a href="/work:{{work._id}}">{{work.display_name}}</a></li>
+  {% endfor %}
+</ul>
+
+<h2 id="collaborating-authors">Linked Collaborating Authors <a href="/docs#institution_collaborating_authors">[?]</a></h2>
+<ul>
+  {% for author in affil_collaborating_authors %}
+  <li><a href="/author:{{author._id}}">{{author.display_name}}</a></li>
   {% endfor %}
 </ul>
 

@@ -73,12 +73,58 @@ async def author_home(request: Request, orcid: str, mdb=Depends(get_mongodb)):
         key=lambda work: (work["ads_work"]["year"], work["display_name"]),
         reverse=True,
     )
+    author_coauthors = mdb.alldocs.aggregate(
+        [
+            {"$match": {"type": "Work", "outgoing.o": author["_id"]}},
+            {"$project": {"outgoing": 1}},
+            {"$unwind": {"path": "$outgoing"}},
+            {"$match": {"outgoing.p": "author"}},
+            {"$project": {"_id": "$outgoing.o"}},
+            {"$group": {"_id": "$_id"}},
+            {
+                "$lookup": {
+                    "from": "alldocs",
+                    "localField": "_id",
+                    "foreignField": "_id",
+                    "as": "author",
+                }
+            },
+            {"$match": {"author._id": {"$exists": True, "$ne": author["_id"]}}},
+            {"$project": {"display_name": {"$first": "$author.display_name"}}},
+            {"$sort": {"display_name": 1}},
+        ],
+        allowDiskUse=True,
+    )
+    author_collaborating_institutions = mdb.alldocs.aggregate(
+        [
+            {"$match": {"type": "Work", "outgoing.o": author["_id"]}},
+            {"$project": {"outgoing": 1}},
+            {"$unwind": {"path": "$outgoing"}},
+            {"$match": {"outgoing.p": "affil"}},
+            {"$project": {"_id": "$outgoing.o"}},
+            {"$group": {"_id": "$_id"}},
+            {
+                "$lookup": {
+                    "from": "alldocs",
+                    "localField": "_id",
+                    "foreignField": "_id",
+                    "as": "institution",
+                }
+            },
+            {"$match": {"institution._id": {"$exists": True}}},
+            {"$project": {"display_name": {"$first": "$institution.display_name"}}},
+            {"$sort": {"display_name": 1}},
+        ],
+        allowDiskUse=True,
+    )
     author_oax_api_link = oax_api_link_for(author.get("oax_author", {}).get("id", ""))
     return templates.TemplateResponse(
         "author.html",
         {
             "request": request,
             "author": author,
+            "author_coauthors": author_coauthors,
+            "author_collaborating_institutions": author_collaborating_institutions,
             "author_oax_api_link": author_oax_api_link,
             "author_concepts": author_concepts,
             "author_works": author_works,
@@ -169,12 +215,35 @@ async def affil_home(request: Request, affil_id: str, mdb=Depends(get_mongodb)):
         list(mdb.alldocs.find({"type": "Work", "outgoing.o": affil["_id"]})),
         key=lambda work: (work["ads_work"]["year"], work["display_name"] or ""),
     )
+    affil_collaborating_authors = mdb.alldocs.aggregate(
+        [
+            {"$match": {"type": "Work", "outgoing.o": affil["_id"]}},
+            {"$project": {"outgoing": 1}},
+            {"$unwind": {"path": "$outgoing"}},
+            {"$match": {"outgoing.p": "author"}},
+            {"$project": {"_id": "$outgoing.o"}},
+            {"$group": {"_id": "$_id"}},
+            {
+                "$lookup": {
+                    "from": "alldocs",
+                    "localField": "_id",
+                    "foreignField": "_id",
+                    "as": "author",
+                }
+            },
+            {"$match": {"author._id": {"$exists": True}}},
+            {"$project": {"display_name": {"$first": "$author.display_name"}}},
+            {"$sort": {"display_name": 1}},
+        ],
+        allowDiskUse=True,
+    )
     affil_ads_id = affil["_id"].split("/")[-1]
     return templates.TemplateResponse(
         "affil.html",
         {
             "request": request,
             "affil": affil,
+            "affil_collaborating_authors": affil_collaborating_authors,
             "affil_ads_id": affil_ads_id,
             "affil_parents": affil_parents,
             "affil_children": affil_children,

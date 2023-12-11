@@ -3,6 +3,9 @@
 {% block content %}
 <h1>{{ concept.display_name }}</h1>
 
+<a href="#broader-concepts">Broader Concepts</a> | <a href="#narrower-concepts">Narrower Concepts</a> |
+<a href="#associated-authors">Associated Authors</a>
+
 <dl>
   <dt>Wikidata</dt>
   <dd><a href="{{concept.concept.wikidata}}">{{concept.concept.wikidata}}</a></dd>
@@ -14,21 +17,21 @@
   <dd>{{concept.concept.level}}</dd>
 </dl>
 
-<h2>Broader Concepts</h2>
+<h2 id="broader-concepts">Broader Concepts</h2>
 <ul>
   {% for concept in concept_parents %}
   <li><a href="/concept:{{concept._id}}">{{concept.display_name}}</a></li>
   {% endfor %}
 </ul>
 
-<h2>Narrower Concepts</h2>
+<h2 id="narrower-concepts"2>Narrower Concepts</h2>
 <ul>
   {% for concept in concept_children %}
   <li><a href="/concept:{{concept._id}}">{{concept.display_name}}</a></li>
   {% endfor %}
 </ul>
 
-<h2>Associated Authors</h2>
+<h2 id="associated-authors">Associated Authors</h2>
 <ul>
   {% for author in concept_authors %}
   <li><a href="/author:{{author._id}}">{{author.display_name}}</a></li>
