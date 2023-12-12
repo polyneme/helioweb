@@ -32,4 +32,14 @@ by a publisher (<code>pub</code>), a user (<code>user</code>), or some other way
     via that author's Works.
 </p>
 
+<h2 id="funnel_authors_by_concepts">Author Funneling by Concepts</h2>
+<p>
+    Funnel authors by an intersection of concept associations.
+    The funneling will use a transitive closure for each selected concept -- specifically,
+    its (narrower) descendants will be included. For example,
+    <a href="/funnel_authors?concept=https%3A%2F%2Fopenalex.org%2FC119857082&concept=&concept=&institution=&institution=&institution=&coauthor=&coauthor=&coauthor=">funneling</a> by <a href="/concept:https://openalex.org/C119857082">Machine Learning</a>
+    will also find authors who are explicitly associated only with narrower concepts
+    such as <a href="/concept:https://openalex.org/C50644808">Artificial neural network</a>.
+</p>
+
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Funnel authors by: concepts {{concepts}}, institutions {{institutions}}, co-authors {{coauthors}}{% endblock %}
 {% block content %}
-<h1 class="has-subheader">Funnel authors by:
+<h1 class="has-subheader">Funnel authors:
 </h1>
 <p>
   {% trans nc=qarg_counts.get("concept")|length %}
@@ -26,7 +26,7 @@
 
 <form class="usa-form usa-form--large" method="get">
   <fieldset class="usa-fieldset visually-grouped-fieldset">
-    <legend>Concepts</legend>
+    <legend>Concepts <a href="/docs#funnel_authors_by_concepts">[?]</a></legend>
     <label class="usa-label" for="concept_0">First Concept</label>
     <div class="usa-combo-box" data-default-value="{{ concepts.0 }}">
       <select class="usa-select" name="concept" id="concept_0">
