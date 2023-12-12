@@ -8,11 +8,17 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from starlette.responses import HTMLResponse
-from toolz import assoc, merge, concatv
+from toolz import assoc, merge, concatv, concat, unique
 
 from helioweb.infra.config import HTTPS_URLS
 from helioweb.infra.core import get_mongodb
-from helioweb.ui.util import raise404_if_none
+from helioweb.ui.util import (
+    raise404_if_none,
+    concept_transitive_closure,
+    institution_transitive_closure,
+    concept_tent,
+    institution_tent,
+)
 
 app = FastAPI(docs_url="/apidocs")
 app.mount(
@@ -110,34 +116,22 @@ async def funnel_authors(
     ):
         authors_with_concepts_filter = {"type": "Author"}
         if any(qarg_values["concept"]):
-            authors_with_concepts_filter["outgoing"] = {
-                "$all": [
-                    {"$elemMatch": {"p": "dcterms:relation", "o": c}}
-                    for c in filter(None, qarg_values["concept"])
-                ]
-            }
-
+            tent = concept_tent(qarg_values["concept"], mdb=mdb)
+            authors_with_concepts_filter["outgoing.o"] = {"$in": tent}
         author_ids_from_concepts = [
             d["_id"] for d in mdb.alldocs.find(authors_with_concepts_filter)
         ]
-
         works_with_authors_filter = {"type": "Work", "outgoing.p": "author"}
-        if any(qarg_values["institution"]) or any(qarg_values["coauthor"]):
-            works_with_authors_filter["outgoing"] = {"$all": []}
         if any(qarg_values["institution"]):
-            works_with_authors_filter["outgoing"]["$all"].extend(
-                [
-                    {"$elemMatch": {"p": "affil", "o": i}}
-                    for i in filter(None, qarg_values["institution"])
-                ]
-            )
+            tent = institution_tent(qarg_values["institution"], mdb=mdb)
+            works_with_authors_filter["outgoing.o"] = {"$in": tent}
         if any(qarg_values["coauthor"]):
-            works_with_authors_filter["outgoing"]["$all"].extend(
-                [
+            works_with_authors_filter["outgoing"] = {
+                "$all": [
                     {"$elemMatch": {"p": "author", "o": a}}
                     for a in filter(None, qarg_values["coauthor"])
                 ]
-            )
+            }
         author_ids_from_institutions_and_coauthors = [
             d["_id"]
             for d in mdb.alldocs.aggregate(
