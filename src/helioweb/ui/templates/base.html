@@ -40,6 +40,15 @@
 					<li class="usa-nav__primary-item">
 						<a href="/search" class="usa-nav-link">Search</a>
 					</li>
+					{% if user.orcid %}
+					<li class="usa-nav__primary-item">
+						<a href="/logout" class="usa-nav-link">Logout</a>
+					</li>
+					{% else %}
+					<li class="usa-nav__primary-item">
+						<a href="{{GLOBALS_orcid_authorize_url}}" class="usa-nav-link">Login via ORCiD</a>
+					</li>
+					{% endif %}
 				</ul>
 			</nav>
 		</div>
@@ -67,6 +76,15 @@
 							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
 								<a class="usa-footer__primary-link" href="/search">Search</a>
 							</li>
+							{% if user.orcid %}
+							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+								<a class="usa-footer__primary-link" href="/logout">Logout</a>
+							</li>
+							{% else %}
+							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+								<a class="usa-footer__primary-link" href="{{GLOBALS_orcid_authorize_url}}">Login via ORCiD</a>
+							</li>
+							{% endif %}
 						</ul>
 					</nav>
 				</div>

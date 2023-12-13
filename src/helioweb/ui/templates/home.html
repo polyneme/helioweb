@@ -4,6 +4,10 @@
 <h1>HelioWeb</h1>
 <p>A Platform for the Future of Heliophysics.</p>
 
+{% if user.orcid %}
+<p>You are logged in as {{user.name}} (ORCiD: {{user.orcid}}). <a href="/logout">Logout</a>.</p>
+{% endif %}
+
 <p>Welcome to HelioWeb – Your Gateway to Heliophysics Discovery!
     Uniting researchers, fostering collaborations, and advancing knowledge, HelioWeb is your single portal for cataloging, connecting, and exploring the vibrant world of heliophysics.
     Join us in accelerating scientific breakthroughs, building resilient capacities, and shaping the future of solar and space exploration.

@@ -1,21 +1,25 @@
 from datetime import date
-from gettext import gettext, ngettext, pgettext, npgettext
+from gettext import gettext, ngettext
 from pathlib import Path
 from typing import Any, Annotated
 
-from fastapi import FastAPI, Depends, Query
+from fastapi import FastAPI, Depends, Query, Cookie
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import requests
 from starlette.requests import Request
-from starlette.responses import HTMLResponse
-from toolz import assoc, merge, concatv, concat, unique
+from starlette.responses import HTMLResponse, RedirectResponse
+from toolz import assoc, merge
 
-from helioweb.infra.config import HTTPS_URLS
+from helioweb.infra.config import (
+    HTTPS_URLS,
+    ORCID_CLIENT_ID,
+    ORCID_CLIENT_SECRET,
+    ORCID_REDIRECT_URI,
+)
 from helioweb.infra.core import get_mongodb
 from helioweb.ui.util import (
     raise404_if_none,
-    concept_transitive_closure,
-    institution_transitive_closure,
     concept_tent,
     institution_tent,
 )
@@ -28,6 +32,11 @@ app.mount(
 )
 templates = Jinja2Templates(directory=Path(__file__).parent.joinpath("templates"))
 templates.env.globals.update({"GLOBALS_today_year": str(date.today().year)})
+templates.env.globals.update(
+    {
+        "GLOBALS_orcid_authorize_url": f"https://orcid.org/oauth/authorize?client_id={ORCID_CLIENT_ID}&response_type=code&scope=openid&redirect_uri={ORCID_REDIRECT_URI}"
+    }
+)
 templates.env.add_extension("jinja2.ext.i18n")
 templates.env.install_gettext_callables(gettext, ngettext)
 
@@ -45,9 +54,65 @@ def https_url_for(request: Request, name: str, **path_params: Any):
 templates.env.globals["https_url_for"] = https_url_for
 
 
+def cookie_primary_value(full_value: str | None):
+    return full_value.split(";", maxsplit=1)[0].strip() if full_value else None
+
+
+async def get_user(
+    orcid: Annotated[str | None, Cookie()] = None,
+    name: Annotated[str | None, Cookie()] = None,
+    id_token: Annotated[str | None, Cookie()] = None,
+):
+    return {
+        "orcid": cookie_primary_value(orcid),
+        "name": cookie_primary_value(name),
+        "id_token": cookie_primary_value(id_token),
+    }
+
+
 @app.get("/", response_class=HTMLResponse)
-async def read_home(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request})
+async def read_home(request: Request, user=Depends(get_user)):
+    return templates.TemplateResponse("home.html", {"request": request, "user": user})
+
+
+@app.get("/orcid_code", response_class=RedirectResponse)
+async def receive_orcid_code(request: Request, code: str):
+    rv = requests.post(
+        "https://orcid.org/oauth/token",
+        data=(
+            f"client_id={ORCID_CLIENT_ID}&client_secret={ORCID_CLIENT_SECRET}&"
+            f"grant_type=authorization_code&code={code}&redirect_uri={ORCID_REDIRECT_URI}"
+        ),
+        headers={
+            "Content-type": "application/x-www-form-urlencoded",
+            "Accept": "application/json",
+        },
+    )
+    token_response = rv.json()
+    response = RedirectResponse(request.url_for("read_home"))
+    for key in ["orcid", "name", "id_token"]:
+        response.set_cookie(
+            key=key,
+            value=token_response[key],
+            max_age=2592000,
+            secure=True,
+            httponly=True,
+            samesite="lax",
+        )
+    return response
+
+
+@app.get("/logout", response_class=RedirectResponse)
+async def logout(request: Request):
+    response = RedirectResponse(request.url_for("read_home"))
+    for key in ["orcid", "name", "id_token"]:
+        response.delete_cookie(
+            key=key,
+            secure=True,
+            httponly=True,
+            samesite="lax",
+        )
+    return response
 
 
 @app.get("/docs", response_class=HTMLResponse)
