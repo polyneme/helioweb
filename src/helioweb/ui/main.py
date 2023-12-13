@@ -102,8 +102,10 @@ async def receive_orcid_code(request: Request, code: str):
 async def logout(request: Request):
     response = RedirectResponse(request.url_for("read_home"))
     for key in ["orcid", "name", "id_token"]:
-        response.delete_cookie(
+        response.set_cookie(
             key=key,
+            value="",
+            expires="Thu, 01 Jan 1970 00:00:00 GMT",
             secure=True,
             httponly=True,
             samesite="lax",
