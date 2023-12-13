@@ -54,19 +54,15 @@ def https_url_for(request: Request, name: str, **path_params: Any):
 templates.env.globals["https_url_for"] = https_url_for
 
 
-def cookie_primary_value(full_value: str | None):
-    return full_value.split(";", maxsplit=1)[0].strip() if full_value else None
-
-
 async def get_user(
     orcid: Annotated[str | None, Cookie()] = None,
     name: Annotated[str | None, Cookie()] = None,
     id_token: Annotated[str | None, Cookie()] = None,
 ):
     return {
-        "orcid": cookie_primary_value(orcid),
-        "name": cookie_primary_value(name),
-        "id_token": cookie_primary_value(id_token),
+        "orcid": orcid,
+        "name": name,
+        "id_token": id_token,
     }
 
 
