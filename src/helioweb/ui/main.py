@@ -95,9 +95,6 @@ async def receive_orcid_code(request: Request, code: str):
             key=key,
             value=token_response[key],
             max_age=2592000,
-            secure=True,
-            httponly=True,
-            samesite="lax",
         )
     return response
 
@@ -110,9 +107,7 @@ async def logout(request: Request):
             key=key,
             value="",
             expires="Thu, 01 Jan 1970 00:00:00 GMT",
-            secure=True,
-            httponly=True,
-            samesite="lax",
+            max_age=-300,
         )
     return response
 
