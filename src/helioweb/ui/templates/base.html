@@ -40,7 +40,7 @@
 					<li class="usa-nav__primary-item">
 						<a href="/search" class="usa-nav-link">Search</a>
 					</li>
-					{% if user.orcid %}
+					{% if user %}
 					<li class="usa-nav__primary-item">
 						<a href="/logout" class="usa-nav-link">Logout</a>
 					</li>
@@ -76,7 +76,7 @@
 							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
 								<a class="usa-footer__primary-link" href="/search">Search</a>
 							</li>
-							{% if user.orcid %}
+							{% if user %}
 							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
 								<a class="usa-footer__primary-link" href="/logout">Logout</a>
 							</li>
