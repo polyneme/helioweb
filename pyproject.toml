@@ -22,6 +22,7 @@ dependencies = [
     "gunicorn",
     "pymongo",
     "rdflib",
+    "requests",
     "toolz",
 ]
 
