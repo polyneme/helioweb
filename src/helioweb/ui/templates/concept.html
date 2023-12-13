@@ -9,6 +9,8 @@
 <figure>
 <pre class="mermaid">
     flowchart
+    NI["add incoming edge"]
+    NO["add outgoing edge"]
     AA["Associated Authors ({{ concept_authors | length }})"]
     C[{{ concept.display_name }}]
     BC["Broader Concepts ({{ concept_parents | length }})"]
@@ -16,9 +18,15 @@
     C== skos:broader ==>BC
     NC== skos:broader ==>C
     AA== dcterms:relation ==>C
+    NI-- ? -->C
+    C-- ? -->NO
     click BC "#broader-concepts"
     click NC "#narrower-concepts"
     click AA "#associated-authors"
+    click NI "#add-incoming-edge"
+    click NO "#add-outgoing-edge"
+    style NI stroke-width:2px,stroke-dasharray: 5 5
+    style NO stroke-width:2px,stroke-dasharray: 5 5
 </pre>
 <figcaption>Graph neighborhood for '{{ concept.display_name }}'. Click aggregate nodes to navigate.</figcaption>
 </figure>
@@ -52,8 +60,74 @@
 <h2 id="associated-authors">Associated Authors</h2>
 <ul>
   {% for author in concept_authors %}
-  <li><a href="/author:{{author._id}}">{{author.display_name}}</a></li>
+  <li>
+      <a href="/author:{{author._id}}">{{author.display_name}}</a>
+      {% if author._submitter %}(submitted by <a href="{{author._submitter}}">{{author._submitter}}</a>){% endif %}
+  </li>
   {% endfor %}
 </ul>
+
+<h2 id="add-incoming-edge">Add Incoming Edge</h2>
+
+{% if user %}
+<form class="usa-form usa-form--large" method="post">
+  <fieldset class="usa-fieldset" disabled>
+    <label class="usa-label" for="narrower_concept">Narrower Concept</label>
+    <div class="usa-combo-box">
+      <select class="usa-select" name="narrower_concept" id="narrower_concept">
+        <option value>Select a concept</option>
+        {% for c in all_author_concepts %}
+        <option value="{{c._id}} skos:broader {{concept._id}}">{{c.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+  <input class="usa-button" type="submit" value="Add Narrower Concept" disabled/>
+</form>
+
+<form class="usa-form usa-form--large" method="post">
+  <fieldset class="usa-fieldset">
+    <label class="usa-label" for="associated_author">Associated Author</label>
+    <div class="usa-combo-box">
+      <select class="usa-select" name="associated_author" id="associated_author">
+        <option value>Select an author</option>
+        {% for a in all_authors %}
+        <option value="{{a._id}} dcterms:relation {{concept._id}}">
+            {{a.display_name}} ({{a._id.replace("https://orcid.org/","orcid:")}})
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+  <input class="usa-button" type="submit" value="Associate Author" />
+</form>
+{% else %}
+<p>
+    <a href="{{GLOBALS_orcid_authorize_url}}&state={{request.url.path}}">Login via ORCiD</a> to contribute.
+</p>
+{% endif %}
+
+<h2 id="add-outgoing-edge">Add Outgoing Edge</h2>
+
+{% if user %}
+<form class="usa-form usa-form--large" method="post">
+  <fieldset class="usa-fieldset" disabled>
+    <label class="usa-label" for="broader_concept">Broader Concept</label>
+    <div class="usa-combo-box">
+      <select class="usa-select" name="broader_concept" id="broader_concept">
+        <option value>Select a concept</option>
+        {% for c in all_author_concepts %}
+        <option value="{{c._id}} skos:broader {{concept._id}}">{{c.display_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+  <input class="usa-button" type="submit" value="Add Broader Concept" disabled/>
+</form>
+{% else %}
+<p>
+    <a href="{{GLOBALS_orcid_authorize_url}}&state={{request.url.path}}">Login via ORCiD</a> to contribute.
+</p>
+{% endif %}
 
 {% endblock %}

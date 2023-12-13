@@ -1,12 +1,14 @@
 from datetime import date
 from gettext import gettext, ngettext
 from pathlib import Path
+import re
 from typing import Any, Annotated
 
-from fastapi import FastAPI, Depends, Query, Cookie
+from fastapi import FastAPI, Depends, Query, Cookie, Form, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import requests
+from starlette import status
 from starlette.requests import Request
 from starlette.responses import HTMLResponse, RedirectResponse
 from toolz import assoc, merge
@@ -76,7 +78,7 @@ async def read_home(request: Request, user=Depends(get_user)):
 
 
 @app.get("/orcid_code", response_class=RedirectResponse)
-async def receive_orcid_code(request: Request, code: str):
+async def receive_orcid_code(request: Request, code: str, state: str | None = None):
     rv = requests.post(
         "https://orcid.org/oauth/token",
         data=(
@@ -89,7 +91,7 @@ async def receive_orcid_code(request: Request, code: str):
         },
     )
     token_response = rv.json()
-    response = RedirectResponse(request.url_for("read_home"))
+    response = RedirectResponse(state or request.url_for("read_home"))
     for key in ["user_orcid", "user_name", "user_id_token"]:
         response.set_cookie(
             key=key,
@@ -100,8 +102,8 @@ async def receive_orcid_code(request: Request, code: str):
 
 
 @app.get("/logout", response_class=RedirectResponse)
-async def logout(request: Request):
-    response = RedirectResponse(request.url_for("read_home"))
+async def logout(request: Request, state: str | None = None):
+    response = RedirectResponse(state or request.url_for("read_home"))
     for key in ["user_orcid", "user_name", "user_id_token"]:
         response.set_cookie(
             key=key,
@@ -264,6 +266,14 @@ async def author_home(
             }
         )
     )
+    author_concept_links = {
+        edge["o"]: edge
+        for edge in author["outgoing"]
+        if edge["p"] == "dcterms:relation"
+    }
+    for c in author_concepts:
+        if submitter := author_concept_links[c["_id"]].get("q2"):
+            c["_submitter"] = submitter
     author_concepts = sorted(
         author_concepts,
         key=lambda concept: (
@@ -523,6 +533,11 @@ async def concept_home(
         ),
         key=lambda author: author["display_name"],
     )
+    for a in concept_authors:
+        if submitter := next(
+            (edge for edge in a["outgoing"] if edge["o"] == concept_id)
+        ).get("q2"):
+            a["_submitter"] = submitter
     concept_oax_api_link = oax_api_link_for(concept["_id"])
     return templates.TemplateResponse(
         "concept.html",
@@ -534,5 +549,60 @@ async def concept_home(
             "concept_children": concept_children,
             "concept_authors": concept_authors,
             "user": user,
+            "all_author_concepts": list(mdb.all_author_concepts.find()),
+            "all_authors": list(mdb.alldocs.find({"type": "Author"}, ["display_name"])),
         },
+    )
+
+
+@app.post("/concept:{concept_id:path}", response_class=RedirectResponse)
+async def add_edge_to_concept(
+    request: Request,
+    concept_id: str,
+    associated_author: Annotated[str, Form()],
+    mdb=Depends(get_mongodb),
+    user=Depends(get_user),
+):
+    if not user:
+        return HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+
+    raise404_if_none(mdb.alldocs.find_one({"_id": concept_id}, ["_id"]))
+    if associated_author:
+        if m := re.match(r"(\S+)\s(\S+)\s(\S+)", associated_author):
+            s, p, o = m.groups()
+            if o != concept_id or p not in ("dcterms:relation",):
+                return HTTPException(
+                    status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    detail="unacceptable author association",
+                )
+            raise404_if_none(
+                mdb.alldocs.find_one({"_id": s}, ["_id"]),
+                detail=f"author {s} not found",
+            )
+            mdb.alldocs.update_one(
+                {"_id": s},
+                {
+                    "$push": {
+                        "outgoing": {
+                            "p": p,
+                            "o": o,
+                            "q": 100,
+                            "q2": f'https://orcid.org/{user["orcid"]}',
+                        }
+                    }
+                },
+            )
+        else:
+            return HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail="author association not properly formatted",
+            )
+    else:
+        HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="no relation asserted",
+        )
+    return RedirectResponse(
+        request.url_for("concept_home", concept_id=concept_id),
+        status_code=status.HTTP_303_SEE_OTHER,
     )

@@ -42,11 +42,11 @@
 					</li>
 					{% if user %}
 					<li class="usa-nav__primary-item">
-						<a href="/logout" class="usa-nav-link">Logout</a>
+						<a href="/logout?state={{request.url.path}}" class="usa-nav-link">Logout</a>
 					</li>
 					{% else %}
 					<li class="usa-nav__primary-item">
-						<a href="{{GLOBALS_orcid_authorize_url}}" class="usa-nav-link">Login via ORCiD</a>
+						<a href="{{GLOBALS_orcid_authorize_url}}&state={{request.url.path}}" class="usa-nav-link">Login via ORCiD</a>
 					</li>
 					{% endif %}
 				</ul>
@@ -78,11 +78,11 @@
 							</li>
 							{% if user %}
 							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-								<a class="usa-footer__primary-link" href="/logout">Logout</a>
+								<a class="usa-footer__primary-link" href="/logout?state={{request.url.path}}">Logout</a>
 							</li>
 							{% else %}
 							<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
-								<a class="usa-footer__primary-link" href="{{GLOBALS_orcid_authorize_url}}">Login via ORCiD</a>
+								<a class="usa-footer__primary-link" href="{{GLOBALS_orcid_authorize_url}}&state={{request.url.path}}">Login via ORCiD</a>
 							</li>
 							{% endif %}
 						</ul>
