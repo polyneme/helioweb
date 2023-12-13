@@ -55,17 +55,17 @@ templates.env.globals["https_url_for"] = https_url_for
 
 
 async def get_user(
-    orcid: Annotated[str | None, Cookie()] = None,
-    name: Annotated[str | None, Cookie()] = None,
-    id_token: Annotated[str | None, Cookie()] = None,
+    user_orcid: Annotated[str | None, Cookie()] = None,
+    user_name: Annotated[str | None, Cookie()] = None,
+    user_id_token: Annotated[str | None, Cookie()] = None,
 ):
     return (
         {
-            "orcid": orcid,
-            "name": name,
-            "id_token": id_token,
+            "orcid": user_orcid,
+            "name": user_name,
+            "id_token": user_id_token,
         }
-        if orcid
+        if user_orcid
         else None
     )
 
@@ -90,10 +90,10 @@ async def receive_orcid_code(request: Request, code: str):
     )
     token_response = rv.json()
     response = RedirectResponse(request.url_for("read_home"))
-    for key in ["orcid", "name", "id_token"]:
+    for key in ["user_orcid", "user_name", "user_id_token"]:
         response.set_cookie(
             key=key,
-            value=token_response[key],
+            value=token_response[key.replace("user_", "")],
             max_age=2592000,
         )
     return response
@@ -102,7 +102,7 @@ async def receive_orcid_code(request: Request, code: str):
 @app.get("/logout", response_class=RedirectResponse)
 async def logout(request: Request):
     response = RedirectResponse(request.url_for("read_home"))
-    for key in ["orcid", "name", "id_token"]:
+    for key in ["user_orcid", "user_name", "user_id_token"]:
         response.set_cookie(
             key=key,
             value="",
@@ -113,8 +113,8 @@ async def logout(request: Request):
 
 
 @app.get("/docs", response_class=HTMLResponse)
-async def read_docs(request: Request):
-    return templates.TemplateResponse("docs.html", {"request": request})
+async def read_docs(request: Request, user=Depends(get_user)):
+    return templates.TemplateResponse("docs.html", {"request": request, "user": user})
 
 
 @app.get("/search", response_class=HTMLResponse)
@@ -123,6 +123,7 @@ async def search(
     q: str = "",
     t: str | None = None,
     mdb=Depends(get_mongodb),
+    user=Depends(get_user),
 ):
     filter_ = {"$text": {"$search": q}}
     if t is not None:
@@ -149,7 +150,8 @@ async def search(
                 r["_href"] = "_:" + r["_id"]
 
     return templates.TemplateResponse(
-        "search.html", {"request": request, "q": q, "results": results, "t": t}
+        "search.html",
+        {"request": request, "q": q, "results": results, "t": t, "user": user},
     )
 
 
@@ -160,6 +162,7 @@ async def funnel_authors(
     institution: Annotated[list[str] | None, Query()] = None,
     coauthor: Annotated[list[str] | None, Query()] = None,
     mdb=Depends(get_mongodb),
+    user=Depends(get_user),
 ):
     qarg_values = {
         "concept": concept or ["", "", ""],
@@ -243,12 +246,15 @@ async def funnel_authors(
             "all_author_concepts": all_author_concepts,
             "all_work_institutions": all_work_institutions,
             "all_authors": all_authors,
+            "user": user,
         },
     )
 
 
 @app.get("/author:{orcid:path}", response_class=HTMLResponse)
-async def author_home(request: Request, orcid: str, mdb=Depends(get_mongodb)):
+async def author_home(
+    request: Request, orcid: str, mdb=Depends(get_mongodb), user=Depends(get_user)
+):
     author = raise404_if_none(mdb.alldocs.find_one({"_id": orcid}))
     author_concepts = list(
         mdb.alldocs.find(
@@ -333,12 +339,15 @@ async def author_home(request: Request, orcid: str, mdb=Depends(get_mongodb)):
             "author_oax_api_link": author_oax_api_link,
             "author_concepts": author_concepts,
             "author_works": author_works,
+            "user": user,
         },
     )
 
 
 @app.get("/work:{work_id:path}", response_class=HTMLResponse)
-async def work_home(request: Request, work_id: str, mdb=Depends(get_mongodb)):
+async def work_home(
+    request: Request, work_id: str, mdb=Depends(get_mongodb), user=Depends(get_user)
+):
     work = raise404_if_none(mdb.alldocs.find_one({"_id": work_id}))
     work_authors = sorted(
         list(
@@ -376,12 +385,15 @@ async def work_home(request: Request, work_id: str, mdb=Depends(get_mongodb)):
             "work": work,
             "work_authors": work_authors,
             "work_affils": work_affils,
+            "user": user,
         },
     )
 
 
 @app.get("/affil:{affil_id:path}", response_class=HTMLResponse)
-async def affil_home(request: Request, affil_id: str, mdb=Depends(get_mongodb)):
+async def affil_home(
+    request: Request, affil_id: str, mdb=Depends(get_mongodb), user=Depends(get_user)
+):
     affil = raise404_if_none(mdb.alldocs.find_one({"_id": affil_id}))
     if affil.get("outgoing"):
         affil_parents = sorted(
@@ -455,12 +467,15 @@ async def affil_home(request: Request, affil_id: str, mdb=Depends(get_mongodb)):
             "affil_parents": affil_parents,
             "affil_children": affil_children,
             "affil_works": affil_works,
+            "user": user,
         },
     )
 
 
 @app.get("/concept:{concept_id:path}", response_class=HTMLResponse)
-async def concept_home(request: Request, concept_id: str, mdb=Depends(get_mongodb)):
+async def concept_home(
+    request: Request, concept_id: str, mdb=Depends(get_mongodb), user=Depends(get_user)
+):
     concept = raise404_if_none(mdb.alldocs.find_one({"_id": concept_id}))
     if concept.get("outgoing"):
         concept_parents = sorted(
@@ -518,5 +533,6 @@ async def concept_home(request: Request, concept_id: str, mdb=Depends(get_mongod
             "concept_parents": concept_parents,
             "concept_children": concept_children,
             "concept_authors": concept_authors,
+            "user": user,
         },
     )
