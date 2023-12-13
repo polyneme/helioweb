@@ -59,11 +59,15 @@ async def get_user(
     name: Annotated[str | None, Cookie()] = None,
     id_token: Annotated[str | None, Cookie()] = None,
 ):
-    return {
-        "orcid": orcid,
-        "name": name,
-        "id_token": id_token,
-    }
+    return (
+        {
+            "orcid": orcid,
+            "name": name,
+            "id_token": id_token,
+        }
+        if orcid
+        else None
+    )
 
 
 @app.get("/", response_class=HTMLResponse)
