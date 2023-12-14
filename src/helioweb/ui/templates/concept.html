@@ -87,11 +87,11 @@
 
 <form class="usa-form usa-form--large" method="post">
   <fieldset class="usa-fieldset">
-    <label class="usa-label" for="associated_author">Associated Author</label>
+    <label class="usa-label" for="associated_author">Associated Author <span class="label-note">(can't pick authors already associated with concept)</span></label>
     <div class="usa-combo-box">
       <select class="usa-select" name="associated_author" id="associated_author">
         <option value>Select an author</option>
-        {% for a in all_authors %}
+        {% for a in all_eligible_authors %}
         <option value="{{a._id}} dcterms:relation {{concept._id}}">
             {{a.display_name}} ({{a._id.replace("https://orcid.org/","orcid:")}})
         </option>

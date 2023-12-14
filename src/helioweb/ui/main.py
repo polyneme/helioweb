@@ -539,6 +539,17 @@ async def concept_home(
         ).get("q2"):
             a["_submitter"] = submitter
     concept_oax_api_link = oax_api_link_for(concept["_id"])
+    all_eligible_authors = list(
+        mdb.alldocs.find(
+            {
+                "type": "Author",
+                "outgoing": {
+                    "$not": {"$elemMatch": {"p": "dcterms:relation", "o": concept_id}}
+                },
+            },
+            ["display_name"],
+        )
+    )
     return templates.TemplateResponse(
         "concept.html",
         {
@@ -550,7 +561,7 @@ async def concept_home(
             "concept_authors": concept_authors,
             "user": user,
             "all_author_concepts": list(mdb.all_author_concepts.find()),
-            "all_authors": list(mdb.alldocs.find({"type": "Author"}, ["display_name"])),
+            "all_eligible_authors": all_eligible_authors,
         },
     )
 

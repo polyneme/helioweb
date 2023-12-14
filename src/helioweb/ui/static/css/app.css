@@ -55,3 +55,7 @@ fieldset.usa-fieldset.visually-grouped-fieldset {
 fieldset.usa-fieldset.visually-grouped-fieldset:not(:first-of-type) {
 	margin-top: 2em;
 }
+
+span.label-note {
+	font-size: small;
+}
