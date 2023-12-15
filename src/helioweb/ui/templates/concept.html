@@ -9,8 +9,6 @@
 <figure>
 <pre class="mermaid">
     flowchart
-    NI["add incoming edge"]
-    NO["add outgoing edge"]
     AA["Associated Authors ({{ concept_authors | length }})"]
     C[{{ concept.display_name }}]
     BC["Broader Concepts ({{ concept_parents | length }})"]
@@ -18,11 +16,14 @@
     C== skos:broader ==>BC
     NC== skos:broader ==>C
     AA== dcterms:relation ==>C
-    NI-- ? -->C
-    C-- ? -->NO
     click BC "#broader-concepts"
     click NC "#narrower-concepts"
     click AA "#associated-authors"
+
+    NI["add incoming edge"]
+    NO["add outgoing edge"]
+    NI-- ? -->C
+    C-- ? -->NO
     click NI "#add-incoming-edge"
     click NO "#add-outgoing-edge"
     style NI stroke-width:2px,stroke-dasharray: 5 5

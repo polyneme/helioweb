@@ -3,6 +3,7 @@ from gettext import gettext, ngettext
 from pathlib import Path
 import re
 from typing import Any, Annotated
+from urllib.parse import unquote_plus
 
 from fastapi import FastAPI, Depends, Query, Cookie, Form, HTTPException
 from fastapi.staticfiles import StaticFiles
@@ -10,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 import requests
 from starlette import status
 from starlette.requests import Request
-from starlette.responses import HTMLResponse, RedirectResponse
+from starlette.responses import HTMLResponse, RedirectResponse, JSONResponse
 from toolz import assoc, merge
 
 from helioweb.infra.config import (
@@ -253,6 +254,85 @@ async def funnel_authors(
     )
 
 
+@app.post("/connectable-works", response_class=JSONResponse)
+async def connectable_works(
+    author_id: str,
+    mdb=Depends(get_mongodb),
+    authored_work: Annotated[str | None, Form()] = None,
+):
+    if not authored_work:
+        return []
+
+    all_works_author_complement = list(
+        mdb.alldocs.find(
+            {
+                "type": "Work",
+                "display_name": {
+                    "$regex": unquote_plus_and_escape_parens(authored_work),
+                    "$options": "i",
+                },
+                "outgoing": {"$not": {"$elemMatch": {"p": "author", "o": author_id}}},
+            },
+            ["display_name", "ads_work.year", "ads_work.bibcode"],
+            limit=25,
+        )
+    )
+    return [
+        {
+            "id": f"{w['_id']} author {author_id}",
+            "value": f"{w['display_name']}",
+        }
+        for w in all_works_author_complement
+    ]
+
+
+def unquote_plus_and_escape_parens(s):
+    """For use of `s` in a regex."""
+    return unquote_plus(s).replace("(", "\\(").replace(")", "\\)")
+
+
+@app.post("/connectable-concepts", response_class=JSONResponse)
+async def connectable_concepts(
+    author_id: str,
+    mdb=Depends(get_mongodb),
+    associated_concept: Annotated[str | None, Form()] = None,
+):
+    if not associated_concept:
+        return []
+
+    author = raise404_if_none(mdb.alldocs.find_one({"_id": author_id}, ["outgoing"]))
+    author_concepts = list(
+        mdb.alldocs.find(
+            {
+                "type": "Concept",
+                "_id": {"$in": [edge["o"] for edge in author["outgoing"]]},
+            },
+            ["_id"],
+        )
+    )
+    all_concepts_author_complement = list(
+        mdb.alldocs.find(
+            {
+                "type": "Concept",
+                "display_name": {
+                    "$regex": unquote_plus_and_escape_parens(associated_concept),
+                    "$options": "i",
+                },
+                "_id": {"$nin": [c["_id"] for c in author_concepts]},
+            },
+            ["display_name"],
+            limit=25,
+        )
+    )
+    return [
+        {
+            "id": f"{author_id} dcterms:relation {c['_id']}",
+            "value": f"{c['display_name']}",
+        }
+        for c in all_concepts_author_complement
+    ]
+
+
 @app.get("/author:{orcid:path}", response_class=HTMLResponse)
 async def author_home(
     request: Request, orcid: str, mdb=Depends(get_mongodb), user=Depends(get_user)
@@ -285,11 +365,20 @@ async def author_home(
         reverse=True,
     )
     author_works = list(mdb.alldocs.find({"type": "Work", "outgoing.o": author["_id"]}))
+    work_author_links = {
+        w["_id"]: edge
+        for w in author_works
+        for edge in w["outgoing"]
+        if edge["p"] == "author"
+    }
     author_works = sorted(
         author_works,
         key=lambda work: (work["ads_work"]["year"], work["display_name"]),
         reverse=True,
     )
+    for w in author_works:
+        if submitter := work_author_links[w["_id"]].get("q2"):
+            w["_submitter"] = submitter
     author_coauthors = list(
         mdb.alldocs.aggregate(
             [
@@ -350,7 +439,93 @@ async def author_home(
             "author_concepts": author_concepts,
             "author_works": author_works,
             "user": user,
+            "all_works_author_complement": [],
+            "all_concepts_author_complement": [],
         },
+    )
+
+
+@app.post("/author:{author_id:path}", response_class=RedirectResponse)
+async def add_edge_to_author(
+    request: Request,
+    author_id: str,
+    associated_concept_id: Annotated[str | None, Form()] = None,
+    authored_work_id: Annotated[str | None, Form()] = None,
+    mdb=Depends(get_mongodb),
+    user=Depends(get_user),
+):
+    if not user:
+        return HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+
+    raise404_if_none(mdb.alldocs.find_one({"_id": author_id}, ["_id"]))
+    if associated_concept_id:
+        if m := re.match(r"(\S+)\s(\S+)\s(\S+)", unquote_plus(associated_concept_id)):
+            s, p, o = m.groups()
+            if s != author_id or p not in ("dcterms:relation",):
+                return HTTPException(
+                    status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    detail="unacceptable author association",
+                )
+            raise404_if_none(
+                mdb.alldocs.find_one({"_id": o}, ["_id"]),
+                detail=f"concept {o} not found",
+            )
+            mdb.alldocs.update_one(
+                {"_id": s},
+                {
+                    "$push": {
+                        "outgoing": {
+                            "p": p,
+                            "o": o,
+                            "q": 100,
+                            "q2": f'https://orcid.org/{user["orcid"]}',
+                        }
+                    }
+                },
+            )
+        else:
+            return HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail="concept association not properly formatted",
+            )
+    elif authored_work_id:
+        if m := re.match(r"(\S+)\s(\S+)\s(\S+)", unquote_plus(authored_work_id)):
+            s, p, o = m.groups()
+            if o != author_id or p not in ("author",):
+                return HTTPException(
+                    status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    detail="unacceptable author association",
+                )
+            raise404_if_none(
+                mdb.alldocs.find_one({"_id": s}, ["_id"]),
+                detail=f"work {s} not found",
+            )
+            mdb.alldocs.update_one(
+                {"_id": s},
+                {
+                    "$push": {
+                        "outgoing": {
+                            "p": p,
+                            "o": o,
+                            "q": 100,
+                            "q2": f'https://orcid.org/{user["orcid"]}',
+                        }
+                    }
+                },
+            )
+        else:
+            return HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail="work association not properly formatted",
+            )
+    else:
+        HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="no relation asserted",
+        )
+    return RedirectResponse(
+        request.url_for("author_home", orcid=author_id),
+        status_code=status.HTTP_303_SEE_OTHER,
     )
 
 

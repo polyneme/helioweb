@@ -23,6 +23,15 @@
     click CA "#co-authors"
     click CI "#collaborating-institutions"
 
+    NI["add incoming edge"]
+    NO["add outgoing edge"]
+    NI-- ? -->A
+    A-- ? -->NO
+    click NI "#add-incoming-edge"
+    click NO "#add-outgoing-edge"
+    style NI stroke-width:2px,stroke-dasharray: 5 5
+    style NO stroke-width:2px,stroke-dasharray: 5 5
+
 </pre>
 <figcaption>Graph neighborhood for '{{ author.display_name }}'. Click aggregate nodes to navigate.</figcaption>
 </figure>
@@ -49,6 +58,7 @@
 <ul>
   {% for work in author_works %}
   <li><a href="/work:{{work._id}}">{{work.display_name}}</a></li>
+      {% if work._submitter %}(submitted by <a href="{{work._submitter}}">{{work._submitter}}</a>){% endif %}
   {% endfor %}
 </ul>
 
@@ -66,5 +76,37 @@
   {% endfor %}
 </ul>
 
+<h2 id="add-incoming-edge">Add Incoming Edge</h2>
+{% if user %}
+<form class="usa-form usa-form--large" method="post">
+  <fieldset class="usa-fieldset">
+      <hk-combo-box endpoint="/connectable-works?author_id={{author._id}}" delay="500">
+          <label class="usa-label" for="authored_work">Authored Work</label>
+          <input class="usa-input" id="authored_work" name="authored_work" required>
+      </hk-combo-box>
+  </fieldset>
+  <input class="usa-button" type="submit" value="Connect Authored Work"/>
+</form>
+{% else %}
+<p>
+    <a href="{{GLOBALS_orcid_authorize_url}}&state={{request.url.path}}">Login via ORCiD</a> to contribute.
+</p>
+{% endif %}
+<h2 id="add-outgoing-edge">Add Outgoing Edge</h2>
+{% if user %}
+<form class="usa-form usa-form--large" method="post">
+  <fieldset class="usa-fieldset">
+      <hk-combo-box endpoint="/connectable-concepts?author_id={{author._id}}" delay="500">
+          <label class="usa-label" for="associated_concept">Associated Concept</label>
+          <input class="usa-input" id="associated_concept" name="associated_concept" required>
+      </hk-combo-box>
+  </fieldset>
+  <input class="usa-button" type="submit" value="Associate With Concept"/>
+</form>
+{% else %}
+<p>
+    <a href="{{GLOBALS_orcid_authorize_url}}&state={{request.url.path}}">Login via ORCiD</a> to contribute.
+</p>
+{% endif %}
 
 {% endblock %}
