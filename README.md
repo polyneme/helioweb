@@ -28,7 +28,7 @@ All tools, code, and databases funded through the Helioweb proposal will be made
 
 ### Data Dump
 
-Denormalized collection, used for AGU demo, of 480,235 json documents comprising ADS works, ADS institutions, OpenAlex authors, and OpenAlex concepts:
+Denormalized collection, used for AGU demo, of 480,235 JSON documents comprising ADS works, ADS institutions, OpenAlex authors, and OpenAlex concepts:
 
 https://files.polyneme.xyz/helioweb/helioweb.alldocs.ndjson.gz (gzipped, newline-delimited JSON; ~340MB compressed; ~1.3GB in memory; taken 2023-12-18)
 
