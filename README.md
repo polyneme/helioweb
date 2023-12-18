@@ -26,6 +26,12 @@ the week of 11-15 December 2023.
 
 All tools, code, and databases funded through the Helioweb proposal will be made publicly available per NASA guidelines and open source directives though collaboration with the Heliophysics Digital Research Library (HDRL) at Goddard Space Flight Center.
 
+### Data Dump
+
+Denormalized collection, used for AGU demo, of 480,235 json documents comprising ADS works, ADS institutions, OpenAlex authors, and OpenAlex concepts:
+
+https://files.polyneme.xyz/helioweb/helioweb.alldocs.ndjson.gz (gzipped, newline-delimited JSON; ~340MB compressed; ~1.3GB in memory; taken 2023-12-18)
+
 ## Team
 
 - Donny Winston, [Polyneme LLC](https://polyneme.xyz/)
